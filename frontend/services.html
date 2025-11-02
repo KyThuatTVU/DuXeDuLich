@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dịch Vụ - Xe Hợp Đồng Thảo Vy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#f59e0b',
+                        accent: '#10b981',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header Component -->
+    <div id="header-placeholder"></div>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-16 bg-gradient-to-br from-blue-50 to-green-50">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                Dịch Vụ <span class="text-primary">Của Chúng Tôi</span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Cung cấp đa dạng các loại hình dịch vụ xe phù hợp với mọi nhu cầu
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4" id="services-container">
+            <!-- Services will be loaded dynamically from API -->
+            <div class="text-center py-12">
+                <i class="fas fa-spinner fa-spin text-4xl text-primary mb-4"></i>
+                <p class="text-gray-600">Đang tải dữ liệu dịch vụ...</p>
+            </div>
+            <!-- Service 1: Xe Du Lịch -->
+            <div class="mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800" alt="Xe du lịch" class="rounded-2xl shadow-xl">
+                    </div>
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marked-alt text-3xl text-primary"></i>
+                            </div>
+                            <h2 class="text-3xl font-bold text-gray-800">Xe Du Lịch</h2>
+                        </div>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Dịch vụ xe du lịch chuyên nghiệp cho các chuyến đi dài ngày, du lịch team building, nghỉ mát cùng gia đình. 
+                            Xe đời mới, tiện nghi đầy đủ với điều hòa, TV, WiFi. Lái xe kinh nghiệm, am hiểu địa lý, nhiệt tình hỗ trợ lịch trình.
+                        </p>
+                        
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-accent text-xl mr-3"></i>
+                                <span class="text-gray-700">Xe 4-45 chỗ, đa dạng lựa chọn</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-accent text-xl mr-3"></i>
+                                <span class="text-gray-700">Lái xe chuyên nghiệp, giàu kinh nghiệm</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-accent text-xl mr-3"></i>
+                                <span class="text-gray-700">Hỗ trợ lập lịch trình, tư vấn điểm đến</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-accent text-xl mr-3"></i>
+                                <span class="text-gray-700">Giá cả cạnh tranh, ưu đãi cho nhóm lớn</span>
+                            </div>
+                        </div>
+
+                        <a href="booking.html" class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center">
+                            <i class="fas fa-calendar-check mr-2"></i>
+                            Đặt xe ngay
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 2: Xe Hợp Đồng -->
+            <div class="mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-briefcase text-3xl text-accent"></i>
+                            </div>
+                            <h2 class="text-3xl font-bold text-gray-800">Xe Hợp Đồng</h2>
+                        </div>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Dịch vụ xe hợp đồng dài hạn cho doanh nghiệp, công ty, tổ chức. Phù hợp cho nhu cầu đưa đón nhân viên, 
+                            phục vụ công việc kinh doanh thường xuyên. Hợp đồng linh hoạt theo tháng, quý, năm với mức giá ưu đãi.
+                        </p>
+                        
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-accent text-xl mr-3"></i>
+                                <span class="text-gray-700">Hợp đồng linh hoạt theo nhu cầu</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-accent text-xl mr-3"></i>
+                                <span class="text-gray-700">Giá cả hợp lý, chiết khấu dài hạn</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-accent text-xl mr-3"></i>
+                                <span class="text-gray-700">Lái xe cố định, quen biết tuyến đường</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-accent text-xl mr-3"></i>
+                                <span class="text-gray-700">Cam kết chất lượng dịch vụ ổn định</span>
+                            </div>
+                        </div>
+
+                        <a href="booking.html" class="bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors inline-flex items-center">
+                            <i class="fas fa-file-signature mr-2"></i>
+                            Đăng ký hợp đồng
+                        </a>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800" alt="Xe hợp đồng" class="rounded-2xl shadow-xl">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 3: Xe Sự Kiện -->
+            <div class="mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800" alt="Xe sự kiện" class="rounded-2xl shadow-xl">
+                    </div>
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-calendar-alt text-3xl text-secondary"></i>
+                            </div>
+                            <h2 class="text-3xl font-bold text-gray-800">Xe Sự Kiện</h2>
+                        </div>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Phục vụ các sự kiện đặc biệt như hội nghị, hội thảo, đám cưới, tiệc tùng, team building. 
+                            Đội xe đa dạng, có thể phục vụ từ nhóm nhỏ đến sự kiện lớn trên 300 người. Đảm bảo đúng giờ, 
+                            chu đáo trong từng chi tiết.
+                        </p>
+                        
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-accent text-xl mr-3"></i>
+                                <span class="text-gray-700">Đa dạng loại xe, từ 4 đến 45 chỗ</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-accent text-xl mr-3"></i>
+                                <span class="text-gray-700">Tư vấn chi tiết về lịch trình, số lượng xe</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-accent text-xl mr-3"></i>
+                                <span class="text-gray-700">Cam kết đúng giờ, không để khách chờ đợi</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-accent text-xl mr-3"></i>
+                                <span class="text-gray-700">Giá ưu đãi cho nhóm, sự kiện lớn</span>
+                            </div>
+                        </div>
+
+                        <a href="booking.html" class="bg-secondary text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition-colors inline-flex items-center">
+                            <i class="fas fa-calendar-check mr-2"></i>
+                            Đặt xe sự kiện
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vehicle Types Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Các Loại Xe</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Đội xe đa dạng, phục vụ mọi nhu cầu từ cá nhân đến doanh nghiệp
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="vehicles-container">
+                <!-- Vehicle types will be loaded dynamically from API -->
+                <div class="col-span-3 text-center py-12">
+                    <i class="fas fa-spinner fa-spin text-4xl text-primary mb-4"></i>
+                    <p class="text-gray-600">Đang tải dữ liệu xe...</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <p class="text-gray-600 text-sm">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    Giá có thể thay đổi tùy thuộc vào lộ trình, thời gian thuê. Liên hệ để được báo giá chính xác.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Available Vehicles Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Xe Hiện Có</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Đội xe đa dạng, sẵn sàng phục vụ quý khách
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="available-vehicles-container">
+                <!-- Available vehicles will be loaded dynamically from API -->
+                <div class="col-span-3 text-center py-12">
+                    <i class="fas fa-spinner fa-spin text-4xl text-primary mb-4"></i>
+                    <p class="text-gray-600">Đang tải dữ liệu xe...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Tại Sao Chọn Chúng Tôi?</h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-certificate text-4xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Giấy phép đầy đủ</h3>
+                    <p class="text-gray-600">Đăng ký kinh doanh hợp pháp, bảo hiểm đầy đủ cho xe và hành khách</p>
+                </div>
+
+                <div class="text-center p-6">
+                    <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tools text-4xl text-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Bảo dưỡng định kỳ</h3>
+                    <p class="text-gray-600">Xe được kiểm tra, bảo dưỡng thường xuyên, đảm bảo an toàn tuyệt đối</p>
+                </div>
+
+                <div class="text-center p-6">
+                    <div class="bg-yellow-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-headset text-4xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Hỗ trợ 24/7</h3>
+                    <p class="text-gray-600">Tổng đài hỗ trợ khách hàng luôn sẵn sàng, kể cả ngày lễ, tết</p>
+                </div>
+
+                <div class="text-center p-6">
+                    <div class="bg-red-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-4xl text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Đúng giờ cam kết</h3>
+                    <p class="text-gray-600">Cam kết đón đúng giờ, không để khách chờ đợi hoặc bỏ lỡ lịch trình</p>
+                </div>
+
+                <div class="text-center p-6">
+                    <div class="bg-indigo-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tag text-4xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Giá cả minh bạch</h3>
+                    <p class="text-gray-600">Báo giá rõ ràng, không phát sinh chi phí ẩn, thanh toán linh hoạt</p>
+                </div>
+
+                <div class="text-center p-6">
+                    <div class="bg-pink-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-smile text-4xl text-pink-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Khách hàng hài lòng</h3>
+                    <p class="text-gray-600">98% khách hàng hài lòng và sử dụng dịch vụ nhiều lần</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section Component -->
+    <div id="cta-placeholder"></div>
+
+    <!-- Footer Component -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Floating Action Buttons Component -->
+    <div id="fab-placeholder"></div>
+
+    <!-- Load Components -->
+    <script src="js/components.js"></script>
+    <script>
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', async () => {
+            await ComponentLoader.loadAllComponents('services');
+        });
+    </script>
+    <script src="js/services.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

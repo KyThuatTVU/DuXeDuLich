@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Quản Lý Đặt Xe | Xe Thảo Vy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#f59e0b',
+                        accent: '#10b981',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-shield-alt text-3xl text-primary"></i>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Admin Panel</h1>
+                        <p class="text-sm text-gray-600">Quản lý đặt xe</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <a href="index.html" class="text-gray-600 hover:text-primary transition-colors">
+                        <i class="fas fa-home mr-2"></i>Về trang chủ
+                    </a>
+                    <button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Đăng xuất
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-8">
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-600 text-sm font-medium">Tổng đơn hàng</p>
+                        <p class="text-3xl font-bold text-gray-800 mt-2">156</p>
+                    </div>
+                    <div class="bg-blue-100 w-14 h-14 rounded-full flex items-center justify-center">
+                        <i class="fas fa-clipboard-list text-2xl text-primary"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-600 text-sm font-medium">Chờ xác nhận</p>
+                        <p class="text-3xl font-bold text-secondary mt-2">12</p>
+                    </div>
+                    <div class="bg-yellow-100 w-14 h-14 rounded-full flex items-center justify-center">
+                        <i class="fas fa-clock text-2xl text-secondary"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-600 text-sm font-medium">Đã xác nhận</p>
+                        <p class="text-3xl font-bold text-accent mt-2">124</p>
+                    </div>
+                    <div class="bg-green-100 w-14 h-14 rounded-full flex items-center justify-center">
+                        <i class="fas fa-check-circle text-2xl text-accent"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-600 text-sm font-medium">Đã hủy</p>
+                        <p class="text-3xl font-bold text-red-500 mt-2">20</p>
+                    </div>
+                    <div class="bg-red-100 w-14 h-14 rounded-full flex items-center justify-center">
+                        <i class="fas fa-times-circle text-2xl text-red-500"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">
+                <i class="fas fa-filter mr-2"></i>Bộ lọc
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">Trạng thái</label>
+                    <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        <option value="">Tất cả</option>
+                        <option value="pending">Chờ xác nhận</option>
+                        <option value="confirmed">Đã xác nhận</option>
+                        <option value="completed">Hoàn thành</option>
+                        <option value="cancelled">Đã hủy</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">Từ ngày</label>
+                    <input type="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">Đến ngày</label>
+                    <input type="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">Tìm kiếm</label>
+                    <input type="text" placeholder="Tên, SĐT, Email..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+            </div>
+        </div>
+
+        <!-- Bookings Table -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="p-6 border-b border-gray-200">
+                <h3 class="text-xl font-bold text-gray-800">
+                    <i class="fas fa-list mr-2"></i>Danh sách đặt xe
+                </h3>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">ID</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Khách hàng</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Liên hệ</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Lịch trình</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Xe</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Trạng thái</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200" id="bookingsTableBody">
+                        <!-- Sample Data Row 1 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#001</td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm font-medium text-gray-900">Nguyễn Văn A</div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">
+                                    <div><i class="fas fa-phone text-primary mr-1"></i> 0912345678</div>
+                                    <div><i class="fas fa-envelope text-gray-400 mr-1"></i> nguyenvana@email.com</div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">
+                                    <div><i class="fas fa-calendar text-primary mr-1"></i> 05/11/2025 - 08:00</div>
+                                    <div class="text-xs text-gray-600 mt-1">
+                                        <i class="fas fa-map-marker-alt text-accent mr-1"></i> 123 Đường ABC → Vũng Tàu
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="text-sm font-medium text-gray-900">Xe 7 chỗ</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                    Chờ xác nhận
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                <button class="text-blue-600 hover:text-blue-800 mr-3" onclick="viewBooking(1)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="text-green-600 hover:text-green-800 mr-3" onclick="confirmBooking(1)">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                                <button class="text-red-600 hover:text-red-800" onclick="cancelBooking(1)">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Sample Data Row 2 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#002</td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm font-medium text-gray-900">Trần Thị B</div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">
+                                    <div><i class="fas fa-phone text-primary mr-1"></i> 0987654321</div>
+                                    <div><i class="fab fa-whatsapp text-green-500 mr-1"></i> 0987654321</div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">
+                                    <div><i class="fas fa-calendar text-primary mr-1"></i> 06/11/2025 - 14:30</div>
+                                    <div class="text-xs text-gray-600 mt-1">
+                                        <i class="fas fa-map-marker-alt text-accent mr-1"></i> Quận 1 → Đà Lạt
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="text-sm font-medium text-gray-900">Xe 16 chỗ</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    Đã xác nhận
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                <button class="text-blue-600 hover:text-blue-800 mr-3" onclick="viewBooking(2)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="text-primary hover:text-blue-800 mr-3" onclick="completeBooking(2)">
+                                    <i class="fas fa-flag-checkered"></i>
+                                </button>
+                                <button class="text-red-600 hover:text-red-800" onclick="cancelBooking(2)">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Sample Data Row 3 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#003</td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm font-medium text-gray-900">Lê Văn C</div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">
+                                    <div><i class="fas fa-phone text-primary mr-1"></i> 0901234567</div>
+                                    <div><i class="fas fa-envelope text-gray-400 mr-1"></i> levanc@email.com</div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">
+                                    <div><i class="fas fa-calendar text-primary mr-1"></i> 03/11/2025 - 10:00</div>
+                                    <div class="text-xs text-gray-600 mt-1">
+                                        <i class="fas fa-map-marker-alt text-accent mr-1"></i> Tân Bình → Nội Bài
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="text-sm font-medium text-gray-900">Xe 4 chỗ</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                                    Hoàn thành
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                <button class="text-blue-600 hover:text-blue-800 mr-3" onclick="viewBooking(3)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="text-gray-400 cursor-not-allowed mr-3" disabled>
+                                    <i class="fas fa-check"></i>
+                                </button>
+                                <button class="text-gray-400 cursor-not-allowed" disabled>
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="bg-gray-50 px-6 py-4 border-t border-gray-200">
+                <div class="flex items-center justify-between">
+                    <div class="text-sm text-gray-700">
+                        Hiển thị <span class="font-medium">1</span> đến <span class="font-medium">10</span> 
+                        trong tổng số <span class="font-medium">156</span> kết quả
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="px-4 py-2 bg-primary text-white rounded-lg">1</button>
+                        <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">2</button>
+                        <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">3</button>
+                        <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Booking Modal -->
+    <div id="viewModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white border-b border-gray-200 p-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-2xl font-bold text-gray-800">
+                        <i class="fas fa-info-circle text-primary mr-2"></i>Chi tiết đặt xe
+                    </h3>
+                    <button onclick="closeViewModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="p-6 space-y-6">
+                <!-- Customer Info -->
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-bold text-gray-800 mb-3 flex items-center">
+                        <i class="fas fa-user text-primary mr-2"></i>Thông tin khách hàng
+                    </h4>
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        <div><span class="font-medium">Họ tên:</span> Nguyễn Văn A</div>
+                        <div><span class="font-medium">SĐT:</span> 0912345678</div>
+                        <div><span class="font-medium">Email:</span> nguyenvana@email.com</div>
+                        <div><span class="font-medium">Zalo:</span> 0912345678</div>
+                    </div>
+                </div>
+
+                <!-- Trip Info -->
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-bold text-gray-800 mb-3 flex items-center">
+                        <i class="fas fa-route text-primary mr-2"></i>Thông tin chuyến đi
+                    </h4>
+                    <div class="space-y-2 text-sm">
+                        <div><span class="font-medium">Ngày:</span> 05/11/2025</div>
+                        <div><span class="font-medium">Giờ đón:</span> 08:00</div>
+                        <div><span class="font-medium">Điểm đón:</span> 123 Đường ABC, Quận 1, TP.HCM</div>
+                        <div><span class="font-medium">Điểm đến:</span> Vũng Tàu</div>
+                        <div><span class="font-medium">Loại xe:</span> Xe 7 chỗ</div>
+                    </div>
+                </div>
+
+                <!-- Note -->
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-bold text-gray-800 mb-3 flex items-center">
+                        <i class="fas fa-comment text-primary mr-2"></i>Ghi chú
+                    </h4>
+                    <p class="text-sm text-gray-700">
+                        Cần xe đời mới, có hành lý nhiều (5 vali lớn), đón đúng giờ.
+                    </p>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex gap-3">
+                    <button onclick="confirmBooking(1)" class="flex-1 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors">
+                        <i class="fas fa-check mr-2"></i>Xác nhận
+                    </button>
+                    <button onclick="cancelBooking(1)" class="flex-1 bg-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-600 transition-colors">
+                        <i class="fas fa-times mr-2"></i>Từ chối
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

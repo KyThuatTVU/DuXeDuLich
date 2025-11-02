@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Lịch Xe - Xe Hợp Đồng Thảo Vy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#f59e0b',
+                        accent: '#10b981',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header Component -->
+    <div id="header-placeholder"></div>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-16 bg-gradient-to-br from-blue-50 to-green-50">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                Đặt Lịch <span class="text-primary">Xe Nhanh Chóng</span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Điền thông tin bên dưới, chúng tôi sẽ liên hệ lại trong thời gian sớm nhất
+            </p>
+        </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <!-- Instructions -->
+                <div class="bg-blue-50 rounded-xl p-6 mb-8">
+                    <h3 class="font-bold text-gray-800 mb-3 flex items-center">
+                        <i class="fas fa-info-circle text-primary text-2xl mr-3"></i>
+                        Hướng dẫn đặt xe
+                    </h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mr-2 mt-1"></i>
+                            <span>Điền đầy đủ thông tin vào form bên dưới (các trường có dấu * là bắt buộc)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mr-2 mt-1"></i>
+                            <span>Chúng tôi sẽ xác nhận và gọi lại cho bạn trong vòng 15 phút</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mr-2 mt-1"></i>
+                            <span>Bạn có thể liên hệ trực tiếp qua Hotline: <strong>0123 456 789</strong> để được hỗ trợ nhanh hơn</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Booking Form -->
+                <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+                    <form id="bookingForm" class="space-y-6">
+                        <!-- Thông tin khách hàng -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 pb-3 border-b border-gray-200">
+                                <i class="fas fa-user-circle text-primary mr-2"></i>
+                                Thông tin khách hàng
+                            </h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">
+                                        <i class="fas fa-user mr-2 text-primary"></i>Họ và tên *
+                                    </label>
+                                    <input type="text" name="name" required 
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                        placeholder="Nhập họ tên đầy đủ">
+                                </div>
+
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">
+                                        <i class="fas fa-phone mr-2 text-primary"></i>Số điện thoại *
+                                    </label>
+                                    <input type="tel" name="phone" required 
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                        placeholder="0912 345 678">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">
+                                        <i class="fas fa-envelope mr-2 text-primary"></i>Email
+                                    </label>
+                                    <input type="email" name="email" 
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                        placeholder="example@email.com (không bắt buộc)">
+                                </div>
+
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">
+                                        <i class="fab fa-whatsapp mr-2 text-primary"></i>Zalo
+                                    </label>
+                                    <input type="text" name="zalo" 
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                        placeholder="Số Zalo (không bắt buộc)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Thông tin chuyến đi -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 pb-3 border-b border-gray-200">
+                                <i class="fas fa-route text-primary mr-2"></i>
+                                Thông tin chuyến đi
+                            </h3>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">
+                                        <i class="fas fa-calendar mr-2 text-primary"></i>Ngày đặt xe *
+                                    </label>
+                                    <input type="date" name="date" required 
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">
+                                        <i class="fas fa-clock mr-2 text-primary"></i>Thời gian đón *
+                                    </label>
+                                    <input type="time" name="time" required 
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">
+                                        <i class="fas fa-car mr-2 text-primary"></i>Loại xe *
+                                    </label>
+                                    <select name="carType" required 
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                        <option value="">-- Chọn loại xe --</option>
+                                        <option value="4">Xe 4 chỗ</option>
+                                        <option value="7">Xe 7 chỗ</option>
+                                        <option value="16">Xe 16 chỗ</option>
+                                        <option value="29">Xe 29 chỗ</option>
+                                        <option value="45">Xe 45 chỗ</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">
+                                        <i class="fas fa-users mr-2 text-primary"></i>Số lượng hành khách
+                                    </label>
+                                    <input type="number" name="passengers" min="1" 
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                        placeholder="Nhập số người">
+                                </div>
+                            </div>
+
+                            <div class="mt-6">
+                                <label class="block text-gray-700 font-semibold mb-2">
+                                    <i class="fas fa-map-marker-alt mr-2 text-primary"></i>Điểm đón *
+                                </label>
+                                <input type="text" name="pickup" required 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                    placeholder="Địa chỉ cụ thể (số nhà, đường, quận/huyện)">
+                            </div>
+
+                            <div class="mt-6">
+                                <label class="block text-gray-700 font-semibold mb-2">
+                                    <i class="fas fa-map-marker-alt mr-2 text-accent"></i>Điểm đến *
+                                </label>
+                                <input type="text" name="destination" required 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                    placeholder="Địa chỉ hoặc tên địa điểm đến">
+                            </div>
+                        </div>
+
+                        <!-- Ghi chú -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 pb-3 border-b border-gray-200">
+                                <i class="fas fa-comment-alt text-primary mr-2"></i>
+                                Yêu cầu thêm
+                            </h3>
+
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">
+                                    Ghi chú (không bắt buộc)
+                                </label>
+                                <textarea name="note" rows="5" 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                    placeholder="Nhập yêu cầu đặc biệt: số lượng hành lý, nhu cầu đặc biệt, điểm dừng nghỉ..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-center pt-6">
+                            <button type="submit" 
+                                class="bg-primary text-white px-12 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors shadow-lg inline-flex items-center">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                Gửi yêu cầu đặt xe
+                            </button>
+                            <p class="text-gray-600 text-sm mt-4">
+                                <i class="fas fa-shield-alt text-accent mr-2"></i>
+                                Thông tin của bạn được bảo mật tuyệt đối
+                            </p>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Quick Contact -->
+                <div class="mt-12 bg-gradient-to-r from-primary to-blue-600 rounded-xl p-8 text-white text-center">
+                    <h3 class="text-2xl font-bold mb-4">Cần tư vấn ngay?</h3>
+                    <p class="mb-6">Liên hệ trực tiếp để được hỗ trợ nhanh chóng</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="tel:0123456789" class="bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            Gọi: 0123 456 789
+                        </a>
+                        <a href="https://zalo.me/0123456789" target="_blank" class="bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors inline-flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            Chat Zalo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal Component -->
+    <div id="modal-placeholder"></div>
+
+    <!-- Footer Component -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Floating Action Buttons Component -->
+    <div id="fab-placeholder"></div>
+
+    <!-- Load Components -->
+    <script src="js/components.js"></script>
+    <script>
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', async () => {
+            await ComponentLoader.loadAllComponents('booking');
+        });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ - Xe Hợp Đồng Thảo Vy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#f59e0b',
+                        accent: '#10b981',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header Component -->
+    <div id="header-placeholder"></div>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-16 bg-gradient-to-br from-blue-50 to-green-50">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                Liên Hệ <span class="text-primary">Với Chúng Tôi</span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Chúng tôi luôn sẵn sàng hỗ trợ bạn 24/7. Liên hệ qua các kênh bên dưới
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <!-- Hotline -->
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-8 text-center hover:shadow-xl transition-shadow">
+                    <div class="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+                        <i class="fas fa-phone-alt text-4xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Hotline</h3>
+                    <a href="tel:0123456789" class="text-primary text-2xl font-bold hover:underline block mb-2">
+                        0123 456 789
+                    </a>
+                    <p class="text-gray-600 text-sm mb-3">Hỗ trợ 24/7</p>
+                    <a href="tel:0123456789" class="bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center">
+                        <i class="fas fa-phone mr-2"></i>
+                        Gọi ngay
+                    </a>
+                </div>
+
+                <!-- Zalo -->
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-8 text-center hover:shadow-xl transition-shadow">
+                    <div class="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+                        <i class="fab fa-whatsapp text-4xl text-accent"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Zalo</h3>
+                    <a href="https://zalo.me/0123456789" class="text-accent text-2xl font-bold hover:underline block mb-2" target="_blank">
+                        0123 456 789
+                    </a>
+                    <p class="text-gray-600 text-sm mb-3">Chat nhanh chóng</p>
+                    <a href="https://zalo.me/0123456789" target="_blank" class="bg-accent text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-600 transition-colors inline-flex items-center">
+                        <i class="fab fa-whatsapp mr-2"></i>
+                        Chat Zalo
+                    </a>
+                </div>
+
+                <!-- Email -->
+                <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-8 text-center hover:shadow-xl transition-shadow">
+                    <div class="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+                        <i class="fas fa-envelope text-4xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Email</h3>
+                    <a href="mailto:info@xethaovy.com" class="text-secondary text-lg font-bold hover:underline block mb-2 break-all">
+                        info@xethaovy.com
+                    </a>
+                    <p class="text-gray-600 text-sm mb-3">Hỗ trợ qua email</p>
+                    <a href="mailto:info@xethaovy.com" class="bg-secondary text-white px-6 py-2 rounded-lg font-semibold hover:bg-yellow-600 transition-colors inline-flex items-center">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Gửi email
+                    </a>
+                </div>
+
+                <!-- Địa chỉ -->
+                <div class="bg-gradient-to-br from-red-50 to-orange-100 rounded-xl p-8 text-center hover:shadow-xl transition-shadow">
+                    <div class="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+                        <i class="fas fa-map-marker-alt text-4xl text-red-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Địa Chỉ</h3>
+                    <p class="text-gray-700 leading-relaxed mb-3">
+                        123 Đường ABC, Phường XYZ<br>
+                        Quận 1, TP. Hồ Chí Minh
+                    </p>
+                    <p class="text-gray-600 text-sm mb-3">Ghé thăm văn phòng</p>
+                    <a href="#" class="bg-red-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-600 transition-colors inline-flex items-center">
+                        <i class="fas fa-map-marked-alt mr-2"></i>
+                        Xem bản đồ
+                    </a>
+                </div>
+            </div>
+
+            <!-- Business Hours -->
+            <div class="bg-gray-50 rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+                    <i class="fas fa-clock text-primary mr-3"></i>Giờ Làm Việc
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-xl p-6 shadow-md">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-briefcase text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">Thứ 2 - Thứ 6</h4>
+                                    <p class="text-gray-600 text-sm">Ngày làm việc</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-primary font-bold text-xl">8:00 - 18:00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 shadow-md">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-calendar-week text-accent text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">Thứ 7 - Chủ nhật</h4>
+                                    <p class="text-gray-600 text-sm">Cuối tuần</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-accent font-bold text-xl">8:00 - 17:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-gradient-to-r from-primary to-blue-600 rounded-xl p-6 text-white text-center">
+                    <i class="fas fa-phone-volume text-3xl mb-3"></i>
+                    <h4 class="text-xl font-bold mb-2">Hotline và Zalo</h4>
+                    <p class="text-blue-100">Hỗ trợ 24/7 kể cả ngày lễ, tết</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Địa Điểm Văn Phòng</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Ghé thăm văn phòng của chúng tôi để được tư vấn trực tiếp
+                </p>
+            </div>
+
+            <!-- Placeholder for Google Maps -->
+            <div class="bg-gray-300 rounded-2xl overflow-hidden shadow-xl h-96 flex items-center justify-center">
+                <div class="text-center">
+                    <i class="fas fa-map-marked-alt text-6xl text-gray-500 mb-4"></i>
+                    <p class="text-gray-600 text-lg">Google Maps sẽ được hiển thị tại đây</p>
+                    <p class="text-gray-500 text-sm mt-2">123 Đường ABC, Quận 1, TP. Hồ Chí Minh</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Câu Hỏi Thường Gặp</h2>
+                <div class="w-24 h-1 bg-primary mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Giải đáp các thắc mắc thường gặp của khách hàng
+                </p>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow">
+                    <div class="flex items-start">
+                        <div class="bg-primary w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-question text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-lg mb-2">Làm thế nào để đặt xe?</h4>
+                            <p class="text-gray-600">
+                                Bạn có thể đặt xe qua website, gọi điện thoại trực tiếp đến hotline 0123 456 789, 
+                                hoặc nhắn tin qua Zalo. Chúng tôi sẽ xác nhận và sắp xếp xe cho bạn ngay.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow">
+                    <div class="flex items-start">
+                        <div class="bg-accent w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-question text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-lg mb-2">Giá cước được tính như thế nào?</h4>
+                            <p class="text-gray-600">
+                                Giá cước phụ thuộc vào loại xe, quãng đường, thời gian thuê. Chúng tôi sẽ báo giá 
+                                cụ thể sau khi nhận thông tin của bạn. Giá đã bao gồm lái xe, xăng, phí cầu đường.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow">
+                    <div class="flex items-start">
+                        <div class="bg-secondary w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-question text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-lg mb-2">Có thể hủy đặt xe được không?</h4>
+                            <p class="text-gray-600">
+                                Bạn có thể hủy đặt xe trước 24h. Nếu hủy trong vòng 24h trước giờ đón, 
+                                có thể phát sinh phí hủy. Vui lòng liên hệ trực tiếp để được hỗ trợ tốt nhất.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow">
+                    <div class="flex items-start">
+                        <div class="bg-red-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-question text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-lg mb-2">Thanh toán như thế nào?</h4>
+                            <p class="text-gray-600">
+                                Chúng tôi hỗ trợ thanh toán tiền mặt, chuyển khoản ngân hàng. Đối với hợp đồng dài hạn, 
+                                bạn có thể thanh toán theo định kỳ (tháng/quý).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow">
+                    <div class="flex items-start">
+                        <div class="bg-indigo-500 w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-question text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-lg mb-2">Xe có được bảo hiểm không?</h4>
+                            <p class="text-gray-600">
+                                Tất cả xe của chúng tôi đều có bảo hiểm trách nhiệm dân sự và bảo hiểm hành khách. 
+                                Bạn hoàn toàn yên tâm về vấn đề an toàn.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <p class="text-gray-600 mb-4">Còn thắc mắc khác?</p>
+                <a href="tel:0123456789" class="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center">
+                    <i class="fas fa-phone mr-2"></i>
+                    Gọi ngay để được tư vấn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section Component -->
+    <div id="cta-placeholder"></div>
+
+    <!-- Footer Component -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Floating Action Buttons Component -->
+    <div id="fab-placeholder"></div>
+
+    <!-- Load Components -->
+    <script src="js/components.js"></script>
+    <script>
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', async () => {
+            await ComponentLoader.loadAllComponents('contact');
+        });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>
