@@ -16,7 +16,7 @@
                 </div>
                 <!-- Company Name -->
                 <div class="text-white">
-                    <div class="text-2xl font-bold leading-tight">HOÀNG LONG</div>
+                    <div class="text-2xl font-bold leading-tight">THẢO VY</div>
                     <div class="text-xs text-gray-300 uppercase tracking-wider">Dịch Vụ Thuê Xe</div>
                 </div>
             </a>
@@ -26,11 +26,19 @@
                 <!-- Menu items will be set by JavaScript -->
             </ul>
 
-            <!-- CTA Button -->
-            <a href="booking.html"
-                class="hidden md:block bg-secondary hover:bg-yellow-600 text-white px-6 py-2 rounded-lg font-bold transition-colors">
-                ĐẶT XE NGAY
-            </a>
+            <!-- CTA Buttons -->
+            <div class="hidden md:flex items-center gap-3">
+                <a href="booking.html"
+                    class="bg-secondary hover:bg-yellow-600 text-white px-6 py-2 rounded-lg font-bold transition-colors">
+                    ĐẶT XE NGAY
+                </a>
+                <a href="login.html"
+                    class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2"
+                    title="Đăng nhập Admin">
+                    <i class="fas fa-user-shield"></i>
+                    <span class="hidden xl:inline">Admin</span>
+                </a>
+            </div>
 
             <!-- Mobile Menu Button -->
             <button id="mobileMenuBtn" class="lg:hidden text-white">
@@ -43,10 +51,16 @@
             <ul class="flex flex-col space-y-3">
                 <!-- Menu items will be set by JavaScript -->
             </ul>
-            <a href="booking.html"
-                class="mt-4 block bg-secondary hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-bold text-center transition-colors">
-                ĐẶT XE NGAY
-            </a>
+            <div class="mt-4 space-y-2">
+                <a href="booking.html"
+                    class="block bg-secondary hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-bold text-center transition-colors">
+                    ĐẶT XE NGAY
+                </a>
+                <a href="login.html"
+                    class="block bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-medium text-center transition-colors">
+                    <i class="fas fa-user-shield mr-2"></i>Admin Login
+                </a>
+            </div>
         </div>
     </nav>
 </header>
