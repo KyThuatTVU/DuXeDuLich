@@ -203,6 +203,9 @@ function switchView(view) {
         case 'bookings':
             loadBookings();
             break;
+        case 'statistics':
+            loadStatistics();
+            break;
         case 'vehicles':
             loadVehicles();
             break;
@@ -281,6 +284,226 @@ function displayDashboard(stats) {
                     </div>
                     <i class="fas fa-concierge-bell text-4xl text-purple-500"></i>
                 </div>
+            </div>
+        </div>
+
+        <!-- Hướng dẫn sử dụng hệ thống -->
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl shadow-lg p-8 mb-8">
+            <div class="flex items-start gap-4 mb-6">
+                <div class="bg-primary w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-info-circle text-white text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                        <i class="fas fa-book-open text-primary mr-2"></i>Hướng Dẫn Sử Dụng Hệ Thống Admin
+                    </h3>
+                    <p class="text-gray-600">Chào mừng bạn đến với trang quản trị. Dưới đây là hướng dẫn chi tiết về các chức năng chính.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Đặt Lịch -->
+                <div class="bg-white rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-blue-100 w-10 h-10 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-calendar-check text-blue-600 text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-800 text-lg">Đặt Lịch</h4>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Xem danh sách tất cả đơn đặt xe từ khách hàng</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Thay đổi trạng thái: Chờ xác nhận → Đã xác nhận → Hoàn thành</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Xem chi tiết thông tin khách hàng, điểm đón, giờ đón</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Xóa đơn đặt không hợp lệ hoặc đã hủy</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Thống Kê -->
+                <div class="bg-white rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-green-100 w-10 h-10 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-chart-bar text-green-600 text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-800 text-lg">Thống Kê</h4>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Xem thống kê đơn đặt theo ngày, tháng, năm</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Lọc theo khoảng thời gian tùy chỉnh</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span><strong>Xuất Excel:</strong> Tải báo cáo chi tiết theo trạng thái</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Phân tích xu hướng đơn đặt qua thời gian</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Quản lý Xe -->
+                <div class="bg-white rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-purple-100 w-10 h-10 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-car text-purple-600 text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-800 text-lg">Quản Lý Xe</h4>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Thêm mới xe: Tên, loại, giá, hình ảnh, thông tin tài xế</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Chỉnh sửa thông tin xe, cập nhật giá, đổi ảnh</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Thay đổi trạng thái: Sẵn sàng / Không sẵn sàng</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Xóa xe không còn sử dụng</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Quản lý Dịch vụ -->
+                <div class="bg-white rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-yellow-100 w-10 h-10 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-concierge-bell text-yellow-600 text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-800 text-lg">Quản Lý Dịch Vụ</h4>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Thêm dịch vụ mới: Tên, mô tả, giá, hình ảnh</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Chỉnh sửa thông tin dịch vụ hiện có</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span><strong>Đổi ảnh dịch vụ:</strong> Upload ảnh mới, hiển thị ngay trang chủ</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Xóa dịch vụ không còn cung cấp</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Quản lý Bài viết -->
+                <div class="bg-white rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-red-100 w-10 h-10 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-newspaper text-red-600 text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-800 text-lg">Quản Lý Bài Viết</h4>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Đăng bài viết tin tức, khuyến mãi, hướng dẫn</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Thêm tiêu đề, nội dung, hình ảnh, danh mục</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span><strong>Tự động hiển thị:</strong> Bài viết xuất hiện ngay trang chủ</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Chỉnh sửa hoặc xóa bài viết cũ</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Quản lý Liên hệ & Tài khoản -->
+                <div class="bg-white rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-indigo-100 w-10 h-10 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-users text-indigo-600 text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-800 text-lg">Liên Hệ & Tài Khoản</h4>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span><strong>Liên hệ:</strong> Xem, trả lời tin nhắn từ khách hàng</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span><strong>Tài khoản:</strong> Thêm, sửa, khóa tài khoản admin/nhân viên</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Phân quyền: Admin, Doanh nghiệp, Khách hàng</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Đổi mật khẩu từ menu trên cùng</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Lưu ý quan trọng -->
+            <div class="mt-6 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+                <div class="flex items-start">
+                    <i class="fas fa-exclamation-triangle text-yellow-600 text-xl mr-3 mt-1"></i>
+                    <div>
+                        <h5 class="font-bold text-gray-800 mb-2">
+                            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>Lưu Ý Quan Trọng
+                        </h5>
+                        <ul class="space-y-1 text-sm text-gray-700">
+                            <li>• <strong>Upload ảnh:</strong> Chọn file từ máy tính, hệ thống tự động lưu và hiển thị</li>
+                            <li>• <strong>Thống kê & Excel:</strong> Vào mục "Thống Kê" để xem báo cáo và xuất file Excel chi tiết</li>
+                            <li>• <strong>Trạng thái đơn:</strong> Nhớ cập nhật trạng thái đơn đặt để khách hàng biết tiến độ</li>
+                            <li>• <strong>Bảo mật:</strong> Đăng xuất khi rời khỏi máy tính, đổi mật khẩu định kỳ</li>
+                            <li>• <strong>Backup:</strong> Nên xuất Excel định kỳ để lưu trữ dữ liệu an toàn</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="mt-6 flex flex-wrap gap-3">
+                <button onclick="switchView('bookings')" class="bg-primary text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center">
+                    <i class="fas fa-calendar-check mr-2"></i>Xem Đặt Lịch
+                </button>
+                <button onclick="switchView('statistics')" class="bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700 transition-colors inline-flex items-center">
+                    <i class="fas fa-chart-bar mr-2"></i>Xem Thống Kê
+                </button>
+                <button onclick="switchView('vehicles')" class="bg-purple-600 text-white px-5 py-2 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center">
+                    <i class="fas fa-car mr-2"></i>Quản Lý Xe
+                </button>
+                <button onclick="switchView('posts')" class="bg-red-600 text-white px-5 py-2 rounded-lg hover:bg-red-700 transition-colors inline-flex items-center">
+                    <i class="fas fa-newspaper mr-2"></i>Đăng Bài Viết
+                </button>
             </div>
         </div>
     `;
@@ -1922,6 +2145,245 @@ window.editAccount = editAccount;
 window.toggleAccountStatus = toggleAccountStatus;
 window.deleteAccount = deleteAccount;
 
+// ============ STATISTICS ============
+async function loadStatistics() {
+    const content = document.getElementById('admin-content');
+    content.innerHTML = `
+        <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Thống Kê Đơn Đặt Xe</h2>
+            
+            <!-- Filter Form -->
+            <div class="bg-white rounded-lg shadow p-6 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Từ ngày</label>
+                        <input type="date" id="statsStartDate" class="w-full px-3 py-2 border rounded-lg">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Đến ngày</label>
+                        <input type="date" id="statsEndDate" class="w-full px-3 py-2 border rounded-lg">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nhóm theo</label>
+                        <select id="statsGroupBy" class="w-full px-3 py-2 border rounded-lg">
+                            <option value="day">Ngày</option>
+                            <option value="month">Tháng</option>
+                            <option value="year">Năm</option>
+                        </select>
+                    </div>
+                    <div class="flex items-end">
+                        <button onclick="updateStatistics()" class="w-full bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                            <i class="fas fa-search mr-2"></i>Lọc
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary Cards -->
+            <div id="statsSummary" class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+                <div class="bg-white rounded-lg shadow p-4 text-center">
+                    <div class="text-gray-500 text-sm mb-1">Tổng đơn</div>
+                    <div class="text-2xl font-bold text-gray-800">-</div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-4 text-center">
+                    <div class="text-gray-500 text-sm mb-1">Chờ xác nhận</div>
+                    <div class="text-2xl font-bold text-yellow-600">-</div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-4 text-center">
+                    <div class="text-gray-500 text-sm mb-1">Đã xác nhận</div>
+                    <div class="text-2xl font-bold text-blue-600">-</div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-4 text-center">
+                    <div class="text-gray-500 text-sm mb-1">Hoàn thành</div>
+                    <div class="text-2xl font-bold text-green-600">-</div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-4 text-center">
+                    <div class="text-gray-500 text-sm mb-1">Đã hủy</div>
+                    <div class="text-2xl font-bold text-red-600">-</div>
+                </div>
+            </div>
+
+            <!-- Export Buttons -->
+            <div class="bg-white rounded-lg shadow p-4 mb-6">
+                <div class="flex flex-wrap gap-4">
+                    <button onclick="exportToExcel('all')" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 inline-flex items-center">
+                        <i class="fas fa-file-excel mr-2"></i>Xuất Excel (Tất cả)
+                    </button>
+                    <button onclick="exportToExcel('pending')" class="bg-yellow-600 text-white px-6 py-2 rounded-lg hover:bg-yellow-700 inline-flex items-center">
+                        <i class="fas fa-file-excel mr-2"></i>Xuất Excel (Chờ xác nhận)
+                    </button>
+                    <button onclick="exportToExcel('confirmed')" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 inline-flex items-center">
+                        <i class="fas fa-file-excel mr-2"></i>Xuất Excel (Đã xác nhận)
+                    </button>
+                    <button onclick="exportToExcel('completed')" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 inline-flex items-center">
+                        <i class="fas fa-file-excel mr-2"></i>Xuất Excel (Hoàn thành)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Statistics Table -->
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Thời gian</th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Tổng</th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Chờ xác nhận</th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Đã xác nhận</th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Hoàn thành</th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Đã hủy</th>
+                        </tr>
+                    </thead>
+                    <tbody id="statsTableBody" class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td colspan="6" class="px-6 py-4 text-center text-gray-500">
+                                <i class="fas fa-spinner fa-spin mr-2"></i>Đang tải dữ liệu...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    `;
+
+    // Set default date range (last 30 days)
+    const endDate = new Date();
+    const startDate = new Date();
+    startDate.setDate(startDate.getDate() - 30);
+    
+    document.getElementById('statsStartDate').value = startDate.toISOString().split('T')[0];
+    document.getElementById('statsEndDate').value = endDate.toISOString().split('T')[0];
+
+    // Load initial statistics
+    updateStatistics();
+}
+
+async function updateStatistics() {
+    const startDate = document.getElementById('statsStartDate').value;
+    const endDate = document.getElementById('statsEndDate').value;
+    const groupBy = document.getElementById('statsGroupBy').value;
+
+    try {
+        const params = new URLSearchParams();
+        if (startDate) params.append('startDate', startDate);
+        if (endDate) params.append('endDate', endDate);
+        params.append('groupBy', groupBy);
+
+        const response = await fetch(`${API_BASE_URL}/admin/bookings/stats?${params}`);
+        const result = await response.json();
+
+        if (result.success) {
+            displayStatistics(result.data);
+        } else {
+            showNotification('Lỗi khi tải thống kê', 'error');
+        }
+    } catch (error) {
+        console.error('Error loading statistics:', error);
+        showNotification('Lỗi kết nối server', 'error');
+    }
+}
+
+function displayStatistics(data) {
+    // Update summary cards
+    const summaryHTML = `
+        <div class="bg-white rounded-lg shadow p-4 text-center">
+            <div class="text-gray-500 text-sm mb-1">Tổng đơn</div>
+            <div class="text-2xl font-bold text-gray-800">${data.summary.total || 0}</div>
+        </div>
+        <div class="bg-white rounded-lg shadow p-4 text-center">
+            <div class="text-gray-500 text-sm mb-1">Chờ xác nhận</div>
+            <div class="text-2xl font-bold text-yellow-600">${data.summary.pending || 0}</div>
+        </div>
+        <div class="bg-white rounded-lg shadow p-4 text-center">
+            <div class="text-gray-500 text-sm mb-1">Đã xác nhận</div>
+            <div class="text-2xl font-bold text-blue-600">${data.summary.confirmed || 0}</div>
+        </div>
+        <div class="bg-white rounded-lg shadow p-4 text-center">
+            <div class="text-gray-500 text-sm mb-1">Hoàn thành</div>
+            <div class="text-2xl font-bold text-green-600">${data.summary.completed || 0}</div>
+        </div>
+        <div class="bg-white rounded-lg shadow p-4 text-center">
+            <div class="text-gray-500 text-sm mb-1">Đã hủy</div>
+            <div class="text-2xl font-bold text-red-600">${data.summary.cancelled || 0}</div>
+        </div>
+    `;
+    document.getElementById('statsSummary').innerHTML = summaryHTML;
+
+    // Update statistics table
+    const tbody = document.getElementById('statsTableBody');
+    
+    if (!data.statistics || data.statistics.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="6" class="px-6 py-4 text-center text-gray-500">
+                    Không có dữ liệu
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
+    tbody.innerHTML = data.statistics.map(row => `
+        <tr class="hover:bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">${row.period}</td>
+            <td class="px-6 py-4 text-center font-bold text-gray-800">${row.total}</td>
+            <td class="px-6 py-4 text-center text-yellow-600">${row.pending || 0}</td>
+            <td class="px-6 py-4 text-center text-blue-600">${row.confirmed || 0}</td>
+            <td class="px-6 py-4 text-center text-green-600">${row.completed || 0}</td>
+            <td class="px-6 py-4 text-center text-red-600">${row.cancelled || 0}</td>
+        </tr>
+    `).join('');
+}
+
+async function exportToExcel(status) {
+    const startDate = document.getElementById('statsStartDate').value;
+    const endDate = document.getElementById('statsEndDate').value;
+
+    try {
+        const params = new URLSearchParams();
+        if (startDate) params.append('startDate', startDate);
+        if (endDate) params.append('endDate', endDate);
+        if (status !== 'all') params.append('status', status);
+
+        // Show loading notification
+        showNotification('Đang xuất file Excel...', 'info');
+
+        const response = await fetch(`${API_BASE_URL}/admin/bookings/export?${params}`);
+        
+        if (!response.ok) {
+            throw new Error('Export failed');
+        }
+
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        
+        const statusText = {
+            'all': 'tat-ca',
+            'pending': 'cho-xac-nhan',
+            'confirmed': 'da-xac-nhan',
+            'completed': 'hoan-thanh'
+        };
+        
+        a.download = `don-dat-xe-${statusText[status]}-${Date.now()}.xlsx`;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+
+        showNotification('✅ Xuất file Excel thành công!', 'success');
+    } catch (error) {
+        console.error('Error exporting to Excel:', error);
+        showNotification('❌ Lỗi khi xuất file Excel', 'error');
+    }
+}
+
+// Make functions global
+window.updateStatistics = updateStatistics;
+window.exportToExcel = exportToExcel;
+
 // ============ UTILITY FUNCTIONS ============
 function formatDate(dateString) {
     if (!dateString) return 'N/A';
@@ -1958,7 +2420,12 @@ function getStatusText(status) {
 }
 
 function showNotification(message, type = 'success') {
-    const bgColor = type === 'success' ? 'bg-green-500' : 'bg-red-500';
+    const colors = {
+        'success': 'bg-green-500',
+        'error': 'bg-red-500',
+        'info': 'bg-blue-500'
+    };
+    const bgColor = colors[type] || colors['success'];
     const notification = document.createElement('div');
     notification.className = `fixed top-4 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50`;
     notification.textContent = message;

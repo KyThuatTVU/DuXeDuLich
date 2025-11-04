@@ -621,4 +621,217 @@ router.post('/upload', (req, res) => {
     });
 });
 
+// ============ BOOKINGS STATISTICS ============
+// Get bookings statistics by date range
+router.get('/bookings/stats', async (req, res) => {
+    try {
+        const { startDate, endDate, groupBy } = req.query;
+        
+        let dateFormat = '%Y-%m-%d';
+        let groupByClause = 'DATE(created_at)';
+        
+        if (groupBy === 'month') {
+            dateFormat = '%Y-%m';
+            groupByClause = 'DATE_FORMAT(created_at, "%Y-%m")';
+        } else if (groupBy === 'year') {
+            dateFormat = '%Y';
+            groupByClause = 'YEAR(created_at)';
+        }
+        
+        let query = `
+            SELECT 
+                ${groupByClause} as period,
+                COUNT(*) as total,
+                SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) as pending,
+                SUM(CASE WHEN status = 'confirmed' THEN 1 ELSE 0 END) as confirmed,
+                SUM(CASE WHEN status = 'completed' THEN 1 ELSE 0 END) as completed,
+                SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) as cancelled
+            FROM bookings
+            WHERE 1=1
+        `;
+        
+        const params = [];
+        
+        if (startDate) {
+            query += ` AND DATE(created_at) >= ?`;
+            params.push(startDate);
+        }
+        
+        if (endDate) {
+            query += ` AND DATE(created_at) <= ?`;
+            params.push(endDate);
+        }
+        
+        query += ` GROUP BY ${groupByClause} ORDER BY period DESC`;
+        
+        const [rows] = await pool.query(query, params);
+        
+        // Get total summary
+        let summaryQuery = `
+            SELECT 
+                COUNT(*) as total,
+                SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) as pending,
+                SUM(CASE WHEN status = 'confirmed' THEN 1 ELSE 0 END) as confirmed,
+                SUM(CASE WHEN status = 'completed' THEN 1 ELSE 0 END) as completed,
+                SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) as cancelled
+            FROM bookings
+            WHERE 1=1
+        `;
+        
+        const summaryParams = [];
+        
+        if (startDate) {
+            summaryQuery += ` AND DATE(created_at) >= ?`;
+            summaryParams.push(startDate);
+        }
+        
+        if (endDate) {
+            summaryQuery += ` AND DATE(created_at) <= ?`;
+            summaryParams.push(endDate);
+        }
+        
+        const [summary] = await pool.query(summaryQuery, summaryParams);
+        
+        res.json({ 
+            success: true, 
+            data: {
+                statistics: rows,
+                summary: summary[0]
+            }
+        });
+    } catch (error) {
+        console.error('Error fetching booking statistics:', error);
+        res.status(500).json({ success: false, message: 'Error fetching statistics' });
+    }
+});
+
+// Export bookings to Excel
+router.get('/bookings/export', async (req, res) => {
+    try {
+        const ExcelJS = require('exceljs');
+        const { startDate, endDate, status } = req.query;
+        
+        let query = `
+            SELECT 
+                b.booking_id,
+                b.customer_name,
+                b.customer_phone,
+                b.customer_email,
+                b.pickup_location,
+                b.dropoff_location,
+                b.pickup_date,
+                b.pickup_time,
+                b.number_of_passengers,
+                b.service_type,
+                b.notes,
+                b.status,
+                b.created_at,
+                v.name as vehicle_name,
+                v.type as vehicle_type
+            FROM bookings b
+            LEFT JOIN vehicles v ON b.vehicle_id = v.vehicle_id
+            WHERE 1=1
+        `;
+        
+        const params = [];
+        
+        if (startDate) {
+            query += ` AND DATE(b.created_at) >= ?`;
+            params.push(startDate);
+        }
+        
+        if (endDate) {
+            query += ` AND DATE(b.created_at) <= ?`;
+            params.push(endDate);
+        }
+        
+        if (status) {
+            query += ` AND b.status = ?`;
+            params.push(status);
+        }
+        
+        query += ` ORDER BY b.created_at DESC`;
+        
+        const [bookings] = await pool.query(query, params);
+        
+        // Create workbook
+        const workbook = new ExcelJS.Workbook();
+        const worksheet = workbook.addWorksheet('Đơn Đặt Xe');
+        
+        // Set column headers
+        worksheet.columns = [
+            { header: 'Mã đơn', key: 'booking_id', width: 10 },
+            { header: 'Khách hàng', key: 'customer_name', width: 25 },
+            { header: 'Điện thoại', key: 'customer_phone', width: 15 },
+            { header: 'Email', key: 'customer_email', width: 30 },
+            { header: 'Điểm đón', key: 'pickup_location', width: 30 },
+            { header: 'Điểm trả', key: 'dropoff_location', width: 30 },
+            { header: 'Ngày đón', key: 'pickup_date', width: 12 },
+            { header: 'Giờ đón', key: 'pickup_time', width: 10 },
+            { header: 'Số hành khách', key: 'number_of_passengers', width: 15 },
+            { header: 'Loại dịch vụ', key: 'service_type', width: 20 },
+            { header: 'Xe', key: 'vehicle_name', width: 25 },
+            { header: 'Loại xe', key: 'vehicle_type', width: 15 },
+            { header: 'Trạng thái', key: 'status', width: 15 },
+            { header: 'Ghi chú', key: 'notes', width: 40 },
+            { header: 'Ngày tạo', key: 'created_at', width: 20 }
+        ];
+        
+        // Style header row
+        worksheet.getRow(1).font = { bold: true };
+        worksheet.getRow(1).fill = {
+            type: 'pattern',
+            pattern: 'solid',
+            fgColor: { argb: 'FF2563EB' }
+        };
+        worksheet.getRow(1).font = { bold: true, color: { argb: 'FFFFFFFF' } };
+        
+        // Add data rows
+        bookings.forEach(booking => {
+            const statusText = {
+                'pending': 'Chờ xác nhận',
+                'confirmed': 'Đã xác nhận',
+                'completed': 'Hoàn thành',
+                'cancelled': 'Đã hủy'
+            };
+            
+            worksheet.addRow({
+                booking_id: booking.booking_id,
+                customer_name: booking.customer_name,
+                customer_phone: booking.customer_phone,
+                customer_email: booking.customer_email || '',
+                pickup_location: booking.pickup_location,
+                dropoff_location: booking.dropoff_location || '',
+                pickup_date: booking.pickup_date ? new Date(booking.pickup_date).toLocaleDateString('vi-VN') : '',
+                pickup_time: booking.pickup_time || '',
+                number_of_passengers: booking.number_of_passengers || '',
+                service_type: booking.service_type || '',
+                vehicle_name: booking.vehicle_name || '',
+                vehicle_type: booking.vehicle_type || '',
+                status: statusText[booking.status] || booking.status,
+                notes: booking.notes || '',
+                created_at: new Date(booking.created_at).toLocaleString('vi-VN')
+            });
+        });
+        
+        // Auto-fit columns
+        worksheet.columns.forEach(column => {
+            column.alignment = { vertical: 'middle', wrapText: true };
+        });
+        
+        // Set response headers
+        const fileName = `don-dat-xe-${Date.now()}.xlsx`;
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        res.setHeader('Content-Disposition', `attachment; filename="${fileName}"`);
+        
+        // Write to response
+        await workbook.xlsx.write(res);
+        res.end();
+        
+    } catch (error) {
+        console.error('Error exporting bookings:', error);
+        res.status(500).json({ success: false, message: 'Error exporting data' });
+    }
+});
+
 module.exports = router;
