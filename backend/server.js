@@ -23,6 +23,7 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/services', require('./routes/services'));
 app.use('/api/vehicles', require('./routes/vehicles'));
 app.use('/api/bookings', require('./routes/bookings'));
+app.use('/api/posts', require('./routes/posts'));
 app.use('/api/admin', require('./routes/admin'));
 
 // Health check

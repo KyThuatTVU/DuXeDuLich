@@ -216,7 +216,7 @@
 
                         <!-- Car Image -->
                         <div class="relative">
-                            <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800" alt="Xe hợp đồng"
+                            <img src="images/index.jpg" alt="Xe hợp đồng"
                                 class="w-full h-auto rounded-2xl shadow-2xl">
                         </div>
                     </div>
@@ -471,6 +471,31 @@
         </div>
     </section>
 
+    <!-- Blog/News Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <p class="text-secondary text-lg font-bold mb-3">TIN TỨC & KHUYẾN MÃI</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                    CẬP NHẬT MỚI NHẤT TỪ CHÚNG TÔI
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Theo dõi tin tức mới nhất về dịch vụ thuê xe, khuyến mãi hấp dẫn và các mẹo hữu ích cho chuyến đi của bạn
+                </p>
+            </div>
+
+            <!-- Posts Grid -->
+            <div id="posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Posts will be loaded here dynamically -->
+                <div class="col-span-3 text-center py-12">
+                    <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+                    <p class="text-gray-600 mt-4">Đang tải bài viết...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FAQ Section -->
     <section class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
@@ -660,6 +685,7 @@
 
     <!-- Load Components -->
     <script src="js/components.js"></script>
+    <script src="js/posts.js"></script>
     <script>
         // Initialize page
         document.addEventListener('DOMContentLoaded', async () => {

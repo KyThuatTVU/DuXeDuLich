@@ -9,8 +9,8 @@ router.get('/', async (req, res) => {
             'SELECT service_id as id, service_name as name, description, price, image as image_url, created_at FROM services ORDER BY service_id ASC'
         );
         
-        // Image mapping for services
-        const imageMap = {
+        // Default fallback images for services
+        const defaultImageMap = {
             0: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800', // Airport
             1: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800', // Daily rental
             2: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800', // Monthly contract
@@ -43,7 +43,8 @@ router.get('/', async (req, res) => {
                 .replace(/[ỳýỵỷỹ]/g, 'y'),
             description: row.description,
             icon: iconMap[index] || 'fa-car',
-            image_url: imageMap[index] || 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800',
+            // Use image from database if available, otherwise use default fallback
+            image_url: row.image_url || defaultImageMap[index] || 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800',
             features: [
                 'Xe đời mới, chất lượng cao', 
                 'Tài xế chuyên nghiệp, giàu kinh nghiệm', 
