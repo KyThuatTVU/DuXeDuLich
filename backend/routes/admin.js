@@ -551,7 +551,7 @@ router.post('/change-password', async (req, res) => {
         
         // Update password
         const [result] = await pool.query(
-            'UPDATE users SET password = ?, updated_at = CURRENT_TIMESTAMP WHERE user_id = ?', 
+            'UPDATE users SET password = ? WHERE user_id = ?', 
             [newPassword, userId]
         );
         

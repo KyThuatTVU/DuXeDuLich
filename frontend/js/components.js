@@ -61,6 +61,11 @@ async function loadHeader(activePage = 'index') {
             </li>
         `).join('');
     }
+
+    // Initialize mobile menu after header is loaded
+    if (typeof window.initMobileMenu === 'function') {
+        window.initMobileMenu();
+    }
 }
 
 // Load footer component

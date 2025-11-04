@@ -4,12 +4,17 @@ function initMobileMenu() {
     const mobileMenu = document.getElementById('mobileMenu');
 
     if (mobileMenuBtn && mobileMenu) {
+        // Remove old event listeners by cloning elements
+        const newMobileMenuBtn = mobileMenuBtn.cloneNode(true);
+        mobileMenuBtn.parentNode.replaceChild(newMobileMenuBtn, mobileMenuBtn);
+        
         // Toggle mobile menu
-        mobileMenuBtn.addEventListener('click', () => {
+        newMobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             mobileMenu.classList.toggle('hidden');
             
             // Toggle icon
-            const icon = mobileMenuBtn.querySelector('i');
+            const icon = newMobileMenuBtn.querySelector('i');
             if (icon) {
                 if (mobileMenu.classList.contains('hidden')) {
                     icon.classList.remove('fa-times');
@@ -26,7 +31,7 @@ function initMobileMenu() {
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
-                const icon = mobileMenuBtn.querySelector('i');
+                const icon = newMobileMenuBtn.querySelector('i');
                 if (icon) {
                     icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
@@ -36,10 +41,10 @@ function initMobileMenu() {
 
         // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+            if (!mobileMenu.contains(e.target) && !newMobileMenuBtn.contains(e.target)) {
                 if (!mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
-                    const icon = mobileMenuBtn.querySelector('i');
+                    const icon = newMobileMenuBtn.querySelector('i');
                     if (icon) {
                         icon.classList.remove('fa-times');
                         icon.classList.add('fa-bars');
@@ -49,6 +54,9 @@ function initMobileMenu() {
         });
     }
 }
+
+// Make initMobileMenu available globally
+window.initMobileMenu = initMobileMenu;
 
 // Smooth Scrolling for Navigation Links
 function initSmoothScrolling() {
@@ -290,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Wait a bit for components to load
     setTimeout(() => {
         try {
-            initMobileMenu();
+            // initMobileMenu is now called automatically after header loads
             initScrollToTop();
             initBookingForm();
             initModalListeners();
