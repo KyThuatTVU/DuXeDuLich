@@ -230,6 +230,9 @@ function displayAvailableVehicles(vehicles) {
         return;
     }
     
+    // Store vehicles data globally for detail view
+    window.vehiclesData = vehicles;
+    
     vehiclesContainer.innerHTML = vehicles.map((vehicle, index) => {
         console.log(`  - Rendering vehicle ${index + 1}:`, vehicle.name);
         
@@ -241,13 +244,16 @@ function displayAvailableVehicles(vehicles) {
         
         return `
             <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
-                <div class="relative">
+                <div class="relative cursor-pointer" onclick="showVehicleDetail(${vehicle.id})">
                     <img src="${vehicle.image_url || 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400'}" 
                          alt="${vehicle.name}" 
-                         class="w-full h-48 object-cover"
+                         class="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
                          onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400'">
                     <div class="absolute top-4 right-4">
                         ${statusBadge}
+                    </div>
+                    <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-3xl opacity-0 hover:opacity-100 transition-opacity"></i>
                     </div>
                 </div>
                 <div class="p-6">
@@ -283,10 +289,17 @@ function displayAvailableVehicles(vehicles) {
                         </div>
                     ` : ''}
                     
-                    <a href="booking.html?vehicle=${vehicle.id}" 
-                       class="block w-full text-center bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors ${vehicle.status !== 'available' ? 'opacity-50 cursor-not-allowed' : ''}">
-                        ${vehicle.status === 'available' ? 'Đặt xe ngay' : 'Đang không có sẵn'}
-                    </a>
+                    <div class="flex gap-2">
+                        <button onclick="showVehicleDetail(${vehicle.id})" 
+                                class="flex-1 text-center bg-gray-100 text-gray-700 px-4 py-2 rounded-lg font-semibold hover:bg-gray-200 transition-colors">
+                            <i class="fas fa-info-circle mr-1"></i>
+                            Chi tiết
+                        </button>
+                        <a href="booking.html?vehicle=${vehicle.id}" 
+                           class="flex-1 text-center bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors ${vehicle.status !== 'available' ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}">
+                            ${vehicle.status === 'available' ? 'Đặt xe' : 'Không có sẵn'}
+                        </a>
+                    </div>
                 </div>
             </div>
         `;
@@ -294,6 +307,157 @@ function displayAvailableVehicles(vehicles) {
     
     console.log('✅ Available vehicles displayed successfully');
 }
+
+// Show vehicle detail modal
+function showVehicleDetail(vehicleId) {
+    const vehicle = window.vehiclesData.find(v => v.id === vehicleId);
+    if (!vehicle) {
+        console.error('Vehicle not found:', vehicleId);
+        return;
+    }
+    
+    const modal = document.getElementById('vehicle-detail-modal');
+    const modalName = document.getElementById('modal-vehicle-name');
+    const modalContent = document.getElementById('modal-vehicle-content');
+    
+    modalName.textContent = vehicle.name;
+    
+    const statusBadge = vehicle.status === 'available' 
+        ? '<span class="bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full">Sẵn sàng</span>'
+        : '<span class="bg-red-100 text-red-800 text-sm font-semibold px-3 py-1 rounded-full">Đang thuê</span>';
+    
+    const stars = '⭐'.repeat(Math.floor(vehicle.rating || 5));
+    
+    // Parse features if it's a string
+    let features = [];
+    if (vehicle.features) {
+        features = typeof vehicle.features === 'string' 
+            ? JSON.parse(vehicle.features) 
+            : vehicle.features;
+    }
+    
+    modalContent.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Left Column - Image -->
+            <div>
+                <img src="${vehicle.image_url || 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800'}" 
+                     alt="${vehicle.name}" 
+                     class="w-full rounded-xl shadow-lg"
+                     onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800'">
+                
+                ${vehicle.rating ? `
+                    <div class="flex items-center justify-center mt-4 p-4 bg-yellow-50 rounded-lg">
+                        <span class="text-yellow-400 text-2xl mr-3">${stars}</span>
+                        <div>
+                            <div class="font-bold text-gray-800">${vehicle.rating}/5.0</div>
+                            <div class="text-sm text-gray-600">Đánh giá từ khách hàng</div>
+                        </div>
+                    </div>
+                ` : ''}
+            </div>
+            
+            <!-- Right Column - Details -->
+            <div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-lg font-semibold text-primary bg-blue-50 px-4 py-2 rounded-full">${vehicle.type}</span>
+                    ${statusBadge}
+                </div>
+                
+                <h4 class="text-2xl font-bold text-gray-800 mb-4">${vehicle.name}</h4>
+                
+                ${vehicle.description ? `
+                    <p class="text-gray-600 mb-6 leading-relaxed">${vehicle.description}</p>
+                ` : ''}
+                
+                <!-- Pricing -->
+                <div class="bg-gradient-to-br from-blue-50 to-green-50 rounded-xl p-6 mb-6">
+                    <h5 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-tag text-primary mr-2"></i>
+                        Bảng giá
+                    </h5>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600">Giá theo ngày:</span>
+                            <span class="font-bold text-xl text-primary">${formatPrice(vehicle.price_per_day)}</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600">Giá theo km:</span>
+                            <span class="font-bold text-lg text-gray-800">${formatPrice(vehicle.price_per_km)}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Features -->
+                ${features.length > 0 ? `
+                    <div class="mb-6">
+                        <h5 class="font-bold text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-2"></i>
+                            Tính năng nổi bật
+                        </h5>
+                        <ul class="space-y-2">
+                            ${features.map(feature => `
+                                <li class="flex items-start text-gray-600">
+                                    <i class="fas fa-chevron-right text-primary mr-2 mt-1 text-sm"></i>
+                                    <span>${feature}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                ` : ''}
+                
+                <!-- Driver Info -->
+                ${vehicle.driver_info ? `
+                    <div class="bg-green-50 rounded-xl p-4 mb-6">
+                        <h5 class="font-bold text-gray-800 mb-2 flex items-center">
+                            <i class="fas fa-user-tie text-accent mr-2"></i>
+                            Thông tin tài xế
+                        </h5>
+                        <p class="text-gray-600">${vehicle.driver_info}</p>
+                    </div>
+                ` : ''}
+                
+                <!-- Action Buttons -->
+                <div class="flex gap-3">
+                    <a href="tel:0787972075" 
+                       class="flex-1 text-center bg-secondary text-white px-6 py-3 rounded-lg font-bold hover:bg-yellow-600 transition-colors">
+                        <i class="fas fa-phone mr-2"></i>
+                        Gọi ngay
+                    </a>
+                    <a href="booking.html?vehicle=${vehicle.id}" 
+                       class="flex-1 text-center bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors ${vehicle.status !== 'available' ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}">
+                        <i class="fas fa-calendar-check mr-2"></i>
+                        ${vehicle.status === 'available' ? 'Đặt xe ngay' : 'Không có sẵn'}
+                    </a>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+// Close vehicle detail modal
+function closeVehicleDetail() {
+    const modal = document.getElementById('vehicle-detail-modal');
+    modal.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById('vehicle-detail-modal');
+    if (e.target === modal) {
+        closeVehicleDetail();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeVehicleDetail();
+    }
+});
 
 // Initialize page
 document.addEventListener('DOMContentLoaded', async () => {
