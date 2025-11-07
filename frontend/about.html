@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giới Thiệu - Thảo Vy Travel</title>
     <script src="https://cdn.tailwindcss.com/3.3.5"></script>
-    <link rel="icon" type="image/png" href="images/logo.png">
+   <link rel="icon" type="image/png" href="images/2.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -33,93 +33,272 @@
     <!-- Header Component -->
     <div id="header-placeholder"></div>
 
-    <!-- Page Header -->
-    <section class="pt-32 pb-8 bg-white border-b">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                Về Thảo Vy Travel – Dịch Vụ Thuê Xe Uy Tín, Chuyên Nghiệp
-            </h1>
+    <!-- Hero Banner -->
+    <section class="relative pt-20 pb-0 overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="images/about-hero.jpg" alt="Thảo Vy Travel" class="w-full h-full object-cover"
+                onerror="this.src='https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1920&h=600&fit=crop'">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-800/80 to-blue-900/70"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 container mx-auto px-4 py-20 md:py-28">
+            <div class="max-w-4xl mx-auto text-center text-white">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                    GIỚI THIỆU
+                </h1>
+                <div class="w-24 h-1 bg-secondary mx-auto mb-6"></div>
+                <p class="text-xl md:text-2xl font-light opacity-95">
+                    Dịch Vụ Thuê Xe Uy Tín, Chuyên Nghiệp Hàng Đầu Việt Nam
+                </p>
+            </div>
+        </div>
+
+        <!-- Wave Divider -->
+        <div class="absolute bottom-0 left-0 right-0 z-10">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+                <path
+                    d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
+                    fill="white" />
+            </svg>
         </div>
     </section>
 
-    <!-- About Content Section -->
-    <section class="py-12 bg-white">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <!-- Giới Thiệu Thảo Vy Travel -->
-            <div class="mb-12">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">
-                    Giới Thiệu Thảo Vy Travel
-                </h2>
-                <p class="text-gray-700 mb-4 leading-relaxed">
-                    Thảo Vy Travel là đơn vị chuyên cung cấp dịch vụ <strong>thuê xe du lịch</strong>, <strong>thuê
-                        xe hợp đồng</strong> chuyên nghiệp tại Việt Nam. Với nhiều năm kinh nghiệm, chúng tôi tự hào là
-                    đối tác tin cậy của hàng nghìn khách hàng cá nhân, doanh nghiệp và tổ chức, mang đến những chuyến đi
-                    an toàn, thoải mái với mức giá hợp lý.
-                </p>
+    <!-- Company Overview Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <!-- Main Introduction with Image -->
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                    <!-- Company Image -->
+                    <div class="order-2 md:order-1">
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                            <img src="images/thuexe.webp" alt="Đội ngũ Thảo Vy Travel" class="w-full h-auto"
+                                onerror="this.src='https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent"></div>
+                        </div>
+                    </div>
 
-                <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">Điểm mạnh của Thảo Vy Travel:</h3>
-                <ul class="space-y-3 text-gray-700">
-                    <li class="leading-relaxed">
-                        • <strong>Đội xe đa dạng, chất lượng cao:</strong> Các dòng xe từ 4 chỗ đến 45 chỗ, đời mới,
-                        được bảo trì thường xuyên.
-                    </li>
-                    <li class="leading-relaxed">
-                        • <strong>Tài xế chuyên nghiệp, tận tâm:</strong> Được đào tạo bài bản, am hiểu tuyến đường,
-                        phục vụ chu đáo.
-                    </li>
-                    <li class="leading-relaxed">
-                        • <strong>Dịch vụ linh hoạt, đáp ứng mọi nhu cầu:</strong> Cho thuê xe theo chuyến, theo ngày,
-                        theo tháng với hợp đồng rõ ràng, minh bạch.
-                    </li>
-                    <li class="leading-relaxed">
-                        • <strong>Hỗ trợ 24/7:</strong> Luôn sẵn sàng phục vụ, kể cả ngày lễ và cuối tuần.
-                    </li>
-                </ul>
+                    <!-- Company Info -->
+                    <div class="order-1 md:order-2">
+                        <div
+                            class="inline-block px-4 py-2 bg-blue-50 text-primary rounded-full text-sm font-semibold mb-4">
+                            TỔNG QUAN VỀ CÔNG TY
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                            Thảo Vy Travel
+                        </h2>
+                        <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+                            Thảo Vy Travel là đơn vị chuyên cung cấp dịch vụ <strong class="text-primary">thuê xe du
+                                lịch</strong>,
+                            <strong class="text-primary">thuê xe hợp đồng</strong> chuyên nghiệp tại Việt Nam.
+                            Với nhiều năm kinh nghiệm, chúng tôi tự hào là đối tác tin cậy của hàng nghìn khách hàng
+                            cá nhân, doanh nghiệp và tổ chức, mang đến những chuyến đi an toàn, thoải mái với mức giá
+                            hợp lý.
+                        </p>
+
+                        <!-- Stats -->
+                        <div class="grid grid-cols-2 gap-6 mb-6">
+                            <div class="text-center p-4 bg-blue-50 rounded-xl">
+                                <div class="text-3xl font-bold text-primary mb-1">500+</div>
+                                <div class="text-sm text-gray-600">Nhân viên</div>
+                            </div>
+                            <div class="text-center p-4 bg-blue-50 rounded-xl">
+                                <div class="text-3xl font-bold text-primary mb-1">10+</div>
+                                <div class="text-sm text-gray-600">Năm kinh nghiệm</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Strengths -->
+                <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 md:p-12 shadow-lg">
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">
+                        Điểm Mạnh Của Thảo Vy Travel
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Strength 1 -->
+                        <div class="flex gap-4 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-car text-primary text-xl"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-2">Đội xe đa dạng, chất lượng cao</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Các dòng xe từ 4 chỗ đến 45 chỗ, đời mới, được bảo trì thường xuyên.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Strength 2 -->
+                        <div class="flex gap-4 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user-tie text-primary text-xl"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-2">Tài xế chuyên nghiệp, tận tâm</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Được đào tạo bài bản, am hiểu tuyến đường, phục vụ chu đáo.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Strength 3 -->
+                        <div class="flex gap-4 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-handshake text-primary text-xl"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-2">Dịch vụ linh hoạt, đáp ứng mọi nhu cầu</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Cho thuê xe theo chuyến, theo ngày, theo tháng với hợp đồng rõ ràng, minh bạch.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Strength 4 -->
+                        <div class="flex gap-4 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-headset text-primary text-xl"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-2">Hỗ trợ 24/7</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Luôn sẵn sàng phục vụ, kể cả ngày lễ và cuối tuần.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rest of Content -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-6xl">
+
+            <!-- Tầm Nhìn - Sứ Mệnh -->
+            <div class="mb-16">
+                <!-- Tầm Nhìn -->
+                <div
+                    class="grid md:grid-cols-2 gap-8 items-center mb-12 bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <!-- Content -->
+                    <div class="p-8 md:p-12">
+                        <h2 class="text-3xl font-bold text-primary mb-6">
+                            TẦM NHÌN
+                        </h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            <strong class="text-primary">Thảo Vy Travel</strong> luôn có gắng hoàn thiện với mục tiêu
+                            trở thành đơn vị dịch vụ
+                            vận chuyển hành khách chuyên nghiệp hàng đầu tại Việt Nam. Chúng tôi để ra các tiêu chí sau
+                            để định hướng
+                            nâng cao các giá trị phục vụ:
+                        </p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-primary mt-1 flex-shrink-0"></i>
+                                <span><strong class="text-primary">Thảo Vy Travel</strong> Đảm bảo vận chuyển an toàn
+                                    cho hành khách, tối ưu
+                                    chi phí cho các doanh nghiệp đối tác.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-primary mt-1 flex-shrink-0"></i>
+                                <span>Từ việc những công tác huấn luyện bài bản, <strong class="text-primary">Thảo Vy
+                                        Travel</strong> sẽ lan
+                                    truyền, tạo môi trường văn hóa giao thông lịch sự, góp phần đưa Việt Nam thành điểm
+                                    đến sáng giá trong khu vực.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-primary mt-1 flex-shrink-0"></i>
+                                <span><strong class="text-primary">Thảo Vy Travel</strong> đáp ứng các yêu cầu của khách
+                                    hàng với tất cả khả
+                                    năng và sự nỗ lực để khẳng định giá trị thương hiệu. Chúng tôi luôn luôn xây dựng và
+                                    tăng cường mối quan hệ tốt đẹp
+                                    lâu dài với khách hàng bằng sự uy tín trong cam kết, tin tưởng, tôn trọng và hợp
+                                    tác.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Image -->
+                    <div class="h-full min-h-[400px] md:min-h-[500px]">
+                        <img src="images/tamnhin.jpg" alt="Tầm nhìn Thảo Vy Travel" class="w-full h-full object-cover"
+                            onerror="this.src='https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=600&fit=crop'">
+                    </div>
+                </div>
+
+                <!-- Sứ Mệnh -->
+                <div class="grid md:grid-cols-2 gap-8 items-center bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <!-- Image (First on mobile, second on desktop) -->
+                    <div class="h-full min-h-[400px] md:min-h-[500px] order-2 md:order-1">
+                        <img src="images/xedulich.jpg" alt="Sứ mệnh Thảo Vy Travel" class="w-full h-full object-cover"
+                            onerror="this.src='https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop'">
+                    </div>
+
+                    <!-- Content -->
+                    <div class="p-8 md:p-12 order-1 md:order-2">
+                        <h2 class="text-3xl font-bold text-primary mb-6">
+                            SỨ MỆNH
+                        </h2>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-star text-secondary mt-1 flex-shrink-0"></i>
+                                <span>Cung cấp dịch vụ thuê xe <strong>chất lượng cao, an toàn tuyệt
+                                        đối</strong>.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-star text-secondary mt-1 flex-shrink-0"></i>
+                                <span>Đáp ứng mọi nhu cầu di chuyển của cá nhân, doanh nghiệp với giải pháp linh hoạt,
+                                    tiết kiệm chi phí.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-star text-secondary mt-1 flex-shrink-0"></i>
+                                <span>Xây dựng đội ngũ tài xế tận tâm, chuyên nghiệp, mang đến trải nghiệm dịch vụ tốt
+                                    nhất.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-star text-secondary mt-1 flex-shrink-0"></i>
+                                <span>Ứng dụng công nghệ hiện đại để nâng cao chất lượng phục vụ, đặt xe nhanh chóng,
+                                    thanh toán tiện lợi.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <!-- Tầm Nhìn - Sứ Mệnh - Giá Trị Cốt Lõi -->
-            <div class="mb-12">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">
-                    Tầm Nhìn – Sứ Mệnh – Giá Trị Cốt Lõi
+            <!-- Giá Trị Cốt Lõi -->
+            <div class="mb-12 bg-gradient-to-br from-primary/5 to-blue-50 rounded-2xl p-8 md:p-12">
+                <h2 class="text-3xl font-bold text-primary mb-8 text-center">
+                    💎 GIÁ TRỊ CỐT LÕI
                 </h2>
-
-                <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">🌟 Tầm Nhìn</h3>
-                <p class="text-gray-700 mb-4 leading-relaxed">
-                    Thảo Vy Travel hướng đến trở thành <strong>thương hiệu số một</strong> trong lĩnh vực cho thuê xe
-                    tại Việt Nam, mang đến dịch vụ vận chuyển an toàn, tiện nghi và đẳng cấp cho mọi khách hàng. Chúng
-                    tôi không ngừng đổi mới, mở rộng mạng lưới để phục vụ khách hàng trên toàn quốc.
-                </p>
-
-                <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">🎯 Sứ Mệnh</h3>
-                <ul class="space-y-2 text-gray-700">
-                    <li class="leading-relaxed">• Cung cấp dịch vụ thuê xe <strong>chất lượng cao, an toàn tuyệt
-                            đối</strong>.</li>
-                    <li class="leading-relaxed">• Đáp ứng mọi nhu cầu di chuyển của cá nhân, doanh nghiệp với giải pháp
-                        linh hoạt, tiết kiệm chi phí.</li>
-                    <li class="leading-relaxed">• Xây dựng đội ngũ tài xế tận tâm, chuyên nghiệp, mang đến trải nghiệm
-                        dịch vụ tốt nhất.</li>
-                    <li class="leading-relaxed">• Ứng dụng công nghệ hiện đại để nâng cao chất lượng phục vụ, đặt xe
-                        nhanh chóng, thanh toán tiện lợi.</li>
-                </ul>
-
-                <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">💎 Giá Trị Cốt Lõi</h3>
-                <ul class="space-y-2 text-gray-700">
-                    <li class="leading-relaxed">
-                        <strong>Khách hàng là trung tâm</strong> – Đặt lợi ích và sự hài lòng của khách hàng lên hàng
-                        đầu.
-                    </li>
-                    <li class="leading-relaxed">
-                        <strong>Uy tín & Chất lượng</strong> – Cam kết xe đời mới, tài xế chuyên nghiệp, phục vụ tận
-                        tâm.
-                    </li>
-                    <li class="leading-relaxed">
-                        <strong>An toàn & Tiện nghi</strong> – Bảo dưỡng xe định kỳ, đảm bảo hành trình an toàn.
-                    </li>
-                    <li class="leading-relaxed">
-                        <strong>Đổi mới & Phát triển</strong> – Không ngừng cải tiến dịch vụ để mang đến trải nghiệm tốt
-                        nhất.
-                    </li>
-                </ul>
+                <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="font-bold text-gray-900 mb-2 text-lg">Khách hàng là trung tâm</h3>
+                        <p class="text-gray-600">Đặt lợi ích và sự hài lòng của khách hàng lên hàng đầu.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="font-bold text-gray-900 mb-2 text-lg">Uy tín & Chất lượng</h3>
+                        <p class="text-gray-600">Cam kết xe đời mới, tài xế chuyên nghiệp, phục vụ tận tâm.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="font-bold text-gray-900 mb-2 text-lg">An toàn & Tiện nghi</h3>
+                        <p class="text-gray-600">Bảo dưỡng xe định kỳ, đảm bảo hành trình an toàn.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="font-bold text-gray-900 mb-2 text-lg">Đổi mới & Phát triển</h3>
+                        <p class="text-gray-600">Không ngừng cải tiến dịch vụ để mang đến trải nghiệm tốt nhất.</p>
+                    </div>
+                </div>
             </div>
 
             <!-- Dịch Vụ Thuê Xe -->
@@ -214,6 +393,87 @@
                 </p>
             </div>
         </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section class="relative py-16 overflow-hidden bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0"
+                style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <!-- Left Side - Illustration -->
+                    <div class="flex justify-center md:justify-start">
+                        <div class="relative">
+                            <!-- Customer Service Illustration -->
+                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                                <div class="flex items-center justify-center">
+                                    <!-- Support Agent Icon -->
+                                    <div class="relative">
+                                        <div
+                                            class="w-48 h-48 bg-white rounded-full flex items-center justify-center shadow-2xl">
+                                            <i class="fas fa-headset text-blue-600 text-7xl"></i>
+                                        </div>
+                                        <!-- Floating Icons -->
+                                        <div
+                                            class="absolute -top-4 -right-4 w-16 h-16 bg-secondary rounded-full flex items-center justify-center shadow-lg animate-bounce">
+                                            <i class="fas fa-phone text-white text-2xl"></i>
+                                        </div>
+                                        <div
+                                            class="absolute -bottom-4 -left-4 w-16 h-16 bg-accent rounded-full flex items-center justify-center shadow-lg animate-pulse">
+                                            <i class="fas fa-comments text-white text-2xl"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side - Content -->
+                    <div class="text-white text-center md:text-left">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                            KẾT NỐI NGAY VỚI THẢO VY TRAVEL
+                        </h2>
+                        <p class="text-lg md:text-xl mb-3 opacity-95">
+                            Đội ngũ Thảo Vy Travel
+                        </p>
+                        <p class="text-base md:text-lg mb-8 opacity-90">
+                            đang sẵn sàng hỗ trợ tư vấn cho Quý khách
+                        </p>
+
+                        <!-- Phone Button -->
+                        <a href="tel:0787972075"
+                            class="inline-flex items-center gap-3 bg-white text-blue-600 px-8 py-4 rounded-full text-xl font-bold shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300 group">
+                            <i class="fas fa-phone-alt text-2xl group-hover:rotate-12 transition-transform"></i>
+                            <span>0787 972 075</span>
+                        </a>
+
+                        <!-- Additional Contact Info -->
+                        <div class="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
+                            <a href="mailto:duyphongtv123@gmail.com"
+                                class="flex items-center gap-2 text-white/90 hover:text-white transition-colors">
+                                <i class="fas fa-envelope"></i>
+                                <span class="text-sm">duyphongtv123@gmail.com</span>
+                            </a>
+                            <span class="text-white/50">|</span>
+                            <div class="flex items-center gap-2 text-white/90">
+                                <i class="fas fa-clock"></i>
+                                <span class="text-sm">Hỗ trợ 24/7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/3 translate-y-1/3"></div>
     </section>
 
     <!-- CTA Section Component -->
