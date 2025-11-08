@@ -42,6 +42,15 @@ router.post('/', async (req, res) => {
 
         console.log('✅ Booking created successfully, ID:', result.insertId);
 
+        // Log thông tin đặt lịch
+        console.log('📋 Booking Details:');
+        console.log(`   - ID: #${result.insertId}`);
+        console.log(`   - Khách hàng: ${customer_name}`);
+        console.log(`   - SĐT: ${customer_phone}`);
+        console.log(`   - Ngày: ${pickup_date} ${pickup_time}`);
+        console.log(`   - Từ: ${pickup_location}`);
+        console.log(`   - Đến: ${dropoff_location || 'Chưa xác định'}`);
+
         res.json({ 
             success: true, 
             message: 'Đặt lịch thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.',
