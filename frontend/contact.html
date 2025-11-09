@@ -51,11 +51,11 @@
                         <i class="fas fa-phone-alt text-4xl text-primary"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-3">Hotline</h3>
-                    <a href="tel:0123456789" class="text-primary text-2xl font-bold hover:underline block mb-2">
-                          078.797.2075
+                    <a href="tel:0123456789" data-phone-link class="text-primary text-2xl font-bold hover:underline block mb-2">
+                          <span data-phone>0123 456 789</span>
                     </a>
                     <p class="text-gray-600 text-sm mb-3">Hỗ trợ 24/7</p>
-                    <a href="tel:0123456789" class="bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center">
+                    <a href="tel:0123456789" data-phone-link class="bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center">
                         <i class="fas fa-phone mr-2"></i>
                         Gọi ngay
                     </a>
@@ -67,11 +67,11 @@
                         <i class="fab fa-whatsapp text-4xl text-accent"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-3">Zalo</h3>
-                    <a href="https://zalo.me/0123456789" class="text-accent text-2xl font-bold hover:underline block mb-2" target="_blank">
-                          078.797.2075
+                    <a href="https://zalo.me/0123456789" data-zalo-link class="text-accent text-2xl font-bold hover:underline block mb-2" target="_blank">
+                          <span data-phone>0123 456 789</span>
                     </a>
                     <p class="text-gray-600 text-sm mb-3">Chat nhanh chóng</p>
-                    <a href="https://zalo.me/0123456789" target="_blank" class="bg-accent text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-600 transition-colors inline-flex items-center">
+                    <a href="https://zalo.me/0123456789" data-zalo-link target="_blank" class="bg-accent text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-600 transition-colors inline-flex items-center">
                         <i class="fab fa-whatsapp mr-2"></i>
                         Chat Zalo
                     </a>
@@ -283,7 +283,7 @@
 
             <div class="text-center mt-12">
                 <p class="text-gray-600 mb-4">Còn thắc mắc khác?</p>
-                <a href="tel:0123456789" class="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center">
+                <a href="tel:0123456789" data-phone-link class="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center">
                     <i class="fas fa-phone mr-2"></i>
                     Gọi ngay để được tư vấn
                 </a>
@@ -308,6 +308,7 @@
             await ComponentLoader.loadAllComponents('contact');
         });
     </script>
+    <script src="js/settings-manager.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

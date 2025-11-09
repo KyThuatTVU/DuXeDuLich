@@ -120,6 +120,16 @@ CREATE TABLE ratings (
     FOREIGN KEY (customer_id) REFERENCES users(user_id)
 );
 
+CREATE TABLE IF NOT EXISTS settings (
+    id INT PRIMARY KEY DEFAULT 1,
+    phone VARCHAR(20) NOT NULL DEFAULT '0123 456 789',
+    zalo VARCHAR(20) NOT NULL DEFAULT '0123456789',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT chk_single_row CHECK (id = 1)
+);
+
+
 -- ===================================
 -- INSERT DỮ LIỆU MẪU CHO DATABASE
 -- Website Quảng Bá Dịch Vụ Xe Hợp Đồng Tháo Vy

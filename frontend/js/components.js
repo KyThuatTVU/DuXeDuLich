@@ -150,6 +150,11 @@ async function loadAllComponents(activePage = 'index') {
         loadContactCards(),
         loadCTASection()
     ]);
+    
+    // Initialize settings after components are loaded
+    if (typeof SettingsManager !== 'undefined') {
+        SettingsManager.init();
+    }
 }
 
 // Export functions

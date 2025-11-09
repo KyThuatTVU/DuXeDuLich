@@ -53,9 +53,10 @@
                 <!-- CTA Buttons -->
                 <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                     <a href="tel:0906736189"
-                        class="bg-secondary text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-600 transition-colors shadow-xl inline-flex items-center justify-center">
+                        class="bg-secondary text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-600 transition-colors shadow-xl inline-flex items-center justify-center"
+                        data-phone-link>
                         <i class="fas fa-phone-alt mr-3"></i>
-                        GỌI NGAY: 0787972075
+                        GỌI NGAY: <span data-phone>0123 456 789</span>
                     </a>
                     <a href="booking.html"
                         class="bg-red-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors shadow-xl inline-flex items-center justify-center border-2 border-white">
@@ -808,6 +809,7 @@
             });
         });
     </script>
+    <script src="js/settings-manager.js"></script>
     <script src="js/main.js"></script>
 </body>
 

@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đánh giá HCI - Học tập theo thời gian</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .hci-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .hci-title {
+            text-align: center;
+            color: #333;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            font-weight: 600;
+            border-bottom: 2px solid #333;
+            padding-bottom: 15px;
+        }
+
+        .hci-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .hci-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .hci-table thead {
+            background: #333;
+        }
+
+        .hci-table th {
+            padding: 12px 10px;
+            text-align: left;
+            color: white;
+            font-weight: 600;
+            border: 1px solid #555;
+            font-size: 13px;
+        }
+
+        .hci-table tbody tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .hci-table tbody tr:hover {
+            background: #f9f9f9;
+        }
+
+        .hci-table td {
+            padding: 12px 10px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        .stt-col {
+            text-align: center;
+            font-weight: 600;
+            color: #333;
+            width: 50px;
+        }
+
+        .violation-yes {
+            color: #d32f2f;
+            font-weight: 600;
+        }
+
+        .violation-no {
+            color: #388e3c;
+            font-weight: 600;
+        }
+
+        .severity {
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .severity-1 {
+            color: #f57c00;
+        }
+
+        .severity-2 {
+            color: #d32f2f;
+        }
+
+        .severity-3 {
+            color: #e64a19;
+            font-weight: 700;
+        }
+
+        .severity-4 {
+            color: #b71c1c;
+            font-weight: 700;
+        }
+
+        .suggestion {
+            color: #555;
+            font-style: italic;
+        }
+
+        .note {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .table-section {
+            margin-bottom: 50px;
+        }
+
+        .table-section:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .hci-container {
+                padding: 15px;
+            }
+
+            .hci-table {
+                font-size: 12px;
+            }
+
+            .hci-table th,
+            .hci-table td {
+                padding: 8px 5px;
+            }
+
+            .hci-title {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hci-container">
+        <div class="table-section">
+            <h1 class="hci-title">Đánh giá HCI: Học tập theo thời gian</h1>
+
+            <div class="hci-table-wrapper">
+                <table class="hci-table">
+                    <thead>
+                        <tr>
+                            <th class="stt-col">STT</th>
+                            <th style="width: 180px;">Nguyên tắc (Heuristic)</th>
+                            <th style="width: 200px;">Mô tả ngắn gọn</th>
+                            <th style="width: 100px;">Vi phạm</th>
+                            <th style="width: 200px;">Mô tả chi tiết vi phạm</th>
+                            <th style="width: 80px;">Mức độ (0-4)</th>
+                            <th style="width: 180px;">Gợi ý cải tiến</th>
+                            <th style="width: 200px;">Ghi chú thêm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="stt-col">1</td>
+                            <td><strong>Hiển thị trạng thái hệ thống rõ ràng</strong></td>
+                            <td>Người dùng biết được hệ thống đang làm gì (loading, tiến trình...)</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Không có mô tả tiến trình</td>
+                            <td class="severity severity-1">1</td>
+                            <td>
+                                <div class="suggestion">Thêm mô tả tiến trình</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">2</td>
+                            <td><strong>Ngôn ngữ phù hợp với người dùng</strong></td>
+                            <td>Giao diện dùng ngôn ngữ dễ hiểu, gần gũi với người dùng</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">3</td>
+                            <td><strong>Kiểm soát và tự do thao tác</strong></td>
+                            <td>Người dùng có thể quay lại, hủy thao tác dễ dàng</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">4</td>
+                            <td><strong>Tính nhất quán và theo chuẩn chung</strong></td>
+                            <td>Thuật ngữ, bố cục, giao diện giống nhau trong toàn bộ ứng dụng</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">5</td>
+                            <td><strong>Ngăn ngừa lỗi xảy ra</strong></td>
+                            <td>Giao diện thiết kế giúp tránh lỗi trước khi xảy ra</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Chưa có giao diện cảnh báo khi hoàn tất</td>
+                            <td class="severity severity-2">2</td>
+                            <td>
+                                <div class="suggestion">Thêm giao diện cảnh báo</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">6</td>
+                            <td><strong>Giảm bớt ghi nhớ (nhận biết thay vì nhớ)</strong></td>
+                            <td>Thông tin cần thiết được hiển thị rõ, không yêu cầu người dùng nhớ</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">7</td>
+                            <td><strong>Linh hoạt và hiệu quả sử dụng</strong></td>
+                            <td>Hỗ trợ người dùng thành thạo và mới bằng các cách thức khác nhau</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">8</td>
+                            <td><strong>Thiết kế tối giản và thẩm mỹ</strong></td>
+                            <td>Giao diện không quá rườm rà, chỉ chứa thông tin cần thiết</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Quá nhiều thứ phải nhớ với thiếu nhi</td>
+                            <td class="severity severity-2">2</td>
+                            <td>
+                                <div class="suggestion">Giản lược</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">9</td>
+                            <td><strong>Giúp nhận biết, chẩn đoán và phục hồi lỗi</strong></td>
+                            <td>Hệ thống thông báo lỗi rõ ràng và hướng dẫn cách khắc phục</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">10</td>
+                            <td><strong>Hỗ trợ và tài liệu hướng dẫn</strong></td>
+                            <td>Có sẵn phần trợ giúp, tài liệu cho người dùng khi cần</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Chưa có tài liệu hướng dẫn</td>
+                            <td class="severity severity-1">1</td>
+                            <td>
+                                <div class="suggestion">Thêm hướng dẫn</div>
+                            </td>
+                            <td>
+                                <div class="note">Hướng dẫn bằng hình ảnh tốt với trẻ em</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <h1 class="hci-title">Đánh giá HCI: Học chữ cái tiếng Việt</h1>
+
+            <div class="hci-table-wrapper">
+                <table class="hci-table">
+                    <thead>
+                        <tr>
+                            <th class="stt-col">STT</th>
+                            <th style="width: 180px;">Nguyên tắc (Heuristic)</th>
+                            <th style="width: 200px;">Mô tả ngắn gọn</th>
+                            <th style="width: 100px;">Vi phạm</th>
+                            <th style="width: 200px;">Mô tả chi tiết vi phạm</th>
+                            <th style="width: 80px;">Mức độ (0-4)</th>
+                            <th style="width: 180px;">Gợi ý cải tiến</th>
+                            <th style="width: 200px;">Ghi chú thêm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="stt-col">1</td>
+                            <td><strong>Hiển thị trạng thái hệ thống rõ ràng</strong></td>
+                            <td>Người dùng biết được hệ thống đang làm gì (loading, tiến trình...)</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Chưa mô tả nếu vần đó chưa đọc được</td>
+                            <td class="severity severity-1">1</td>
+                            <td>
+                                <div class="suggestion">Thêm ảnh đang chờ</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">2</td>
+                            <td><strong>Ngôn ngữ phù hợp với người dùng</strong></td>
+                            <td>Giao diện dùng ngôn ngữ dễ hiểu, gần gũi với người dùng</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">3</td>
+                            <td><strong>Kiểm soát và tự do thao tác</strong></td>
+                            <td>Người dùng có thể quay lại, hủy thao tác dễ dàng</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Các nút chức năng còn rối loạn</td>
+                            <td class="severity severity-4">4</td>
+                            <td>
+                                <div class="suggestion">Thêm giao diện dạng hình phụ để thực hiện chức năng</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">4</td>
+                            <td><strong>Tính nhất quán và theo chuẩn chung</strong></td>
+                            <td>Thuật ngữ, bố cục, giao diện giống nhau trong toàn bộ ứng dụng</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">5</td>
+                            <td><strong>Ngăn ngừa lỗi xảy ra</strong></td>
+                            <td>Giao diện thiết kế giúp tránh lỗi trước khi xảy ra</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Nút trợ lý quá gần với phần phát thanh</td>
+                            <td class="severity severity-1">1</td>
+                            <td>
+                                <div class="suggestion">Đặt lên trên tránh nhầm lẫn</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">6</td>
+                            <td><strong>Giảm bớt ghi nhớ (nhận biết thay vì nhớ)</strong></td>
+                            <td>Thông tin cần thiết được hiển thị rõ, không yêu cầu người dùng nhớ</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">7</td>
+                            <td><strong>Linh hoạt và hiệu quả sử dụng</strong></td>
+                            <td>Hỗ trợ người dùng thành thạo và mới bằng các cách thức khác nhau</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">8</td>
+                            <td><strong>Thiết kế tối giản và thẩm mỹ</strong></td>
+                            <td>Giao diện không quá rườm rà, chỉ chứa thông tin cần thiết</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">9</td>
+                            <td><strong>Giúp nhận biết, chẩn đoán và phục hồi lỗi</strong></td>
+                            <td>Hệ thống thông báo lỗi rõ ràng và hướng dẫn cách khắc phục</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Chưa có thông báo</td>
+                            <td class="severity severity-1">1</td>
+                            <td>
+                                <div class="suggestion">Thêm thông báo</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">10</td>
+                            <td><strong>Hỗ trợ và tài liệu hướng dẫn</strong></td>
+                            <td>Có sẵn phần trợ giúp, tài liệu cho người dùng khi cần</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <h1 class="hci-title">Đánh giá HCI: Luyện đánh vần</h1>
+
+            <div class="hci-table-wrapper">
+                <table class="hci-table">
+                    <thead>
+                        <tr>
+                            <th class="stt-col">STT</th>
+                            <th style="width: 180px;">Nguyên tắc (Heuristic)</th>
+                            <th style="width: 200px;">Mô tả ngắn gọn</th>
+                            <th style="width: 100px;">Vi phạm</th>
+                            <th style="width: 200px;">Mô tả chi tiết vi phạm</th>
+                            <th style="width: 80px;">Mức độ (0-4)</th>
+                            <th style="width: 180px;">Gợi ý cải tiến</th>
+                            <th style="width: 200px;">Ghi chú thêm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="stt-col">1</td>
+                            <td><strong>Hiển thị trạng thái hệ thống rõ ràng</strong></td>
+                            <td>Người dùng biết được hệ thống đang làm gì (loading, tiến trình...)</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">2</td>
+                            <td><strong>Ngôn ngữ phù hợp với người dùng</strong></td>
+                            <td>Giao diện dùng ngôn ngữ dễ hiểu, gần gũi với người dùng</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">3</td>
+                            <td><strong>Kiểm soát và tự do thao tác</strong></td>
+                            <td>Người dùng có thể quay lại, hủy thao tác dễ dàng</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Các nút chức năng còn rối loạn</td>
+                            <td class="severity severity-4">4</td>
+                            <td>
+                                <div class="suggestion">Định dạng prototype</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">4</td>
+                            <td><strong>Tính nhất quán và theo chuẩn chung</strong></td>
+                            <td>Thuật ngữ, bố cục, giao diện giống nhau trong toàn bộ ứng dụng</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">5</td>
+                            <td><strong>Ngăn ngừa lỗi xảy ra</strong></td>
+                            <td>Giao diện thiết kế giúp tránh lỗi trước khi xảy ra</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">6</td>
+                            <td><strong>Giảm bớt ghi nhớ (nhận biết thay vì nhớ)</strong></td>
+                            <td>Thông tin cần thiết được hiển thị rõ, không yêu cầu người dùng nhớ</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">7</td>
+                            <td><strong>Linh hoạt và hiệu quả sử dụng</strong></td>
+                            <td>Hỗ trợ người dùng thành thạo và mới bằng các cách thức khác nhau</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">8</td>
+                            <td><strong>Thiết kế tối giản và thẩm mỹ</strong></td>
+                            <td>Giao diện không quá rườm rà, chỉ chứa thông tin cần thiết</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">9</td>
+                            <td><strong>Giúp nhận biết, chẩn đoán và phục hồi lỗi</strong></td>
+                            <td>Hệ thống thông báo lỗi rõ ràng và hướng dẫn cách khắc phục</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">10</td>
+                            <td><strong>Hỗ trợ và tài liệu hướng dẫn</strong></td>
+                            <td>Có sẵn phần trợ giúp, tài liệu cho người dùng khi cần</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <h1 class="hci-title">Đánh giá HCI: Trợ lý AI</h1>
+
+            <div class="hci-table-wrapper">
+                <table class="hci-table">
+                    <thead>
+                        <tr>
+                            <th class="stt-col">STT</th>
+                            <th style="width: 180px;">Nguyên tắc (Heuristic)</th>
+                            <th style="width: 200px;">Mô tả ngắn gọn</th>
+                            <th style="width: 100px;">Vi phạm</th>
+                            <th style="width: 200px;">Mô tả chi tiết vi phạm</th>
+                            <th style="width: 80px;">Mức độ (0-4)</th>
+                            <th style="width: 180px;">Gợi ý cải tiến</th>
+                            <th style="width: 200px;">Ghi chú thêm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="stt-col">1</td>
+                            <td><strong>Hiển thị trạng thái hệ thống rõ ràng</strong></td>
+                            <td>Người dùng biết được hệ thống đang làm gì (loading, tiến trình...)</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">2</td>
+                            <td><strong>Ngôn ngữ phù hợp với người dùng</strong></td>
+                            <td>Giao diện dùng ngôn ngữ dễ hiểu, gần gũi với người dùng</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">3</td>
+                            <td><strong>Kiểm soát và tự do thao tác</strong></td>
+                            <td>Người dùng có thể quay lại, hủy thao tác dễ dàng</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Thiếu nút hủy khi người dùng đưa sai ảnh phân tích</td>
+                            <td class="severity severity-4">4</td>
+                            <td>
+                                <div class="suggestion">Thêm nút hủy</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">4</td>
+                            <td><strong>Tính nhất quán và theo chuẩn chung</strong></td>
+                            <td>Thuật ngữ, bố cục, giao diện giống nhau trong toàn bộ ứng dụng</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Màu khác với tổng thể ứng dụng</td>
+                            <td class="severity severity-1">1</td>
+                            <td>
+                                <div class="suggestion">Chỉnh màu lại cho đồng bộ hệ thống</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">5</td>
+                            <td><strong>Ngăn ngừa lỗi xảy ra</strong></td>
+                            <td>Giao diện thiết kế giúp tránh lỗi trước khi xảy ra</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">6</td>
+                            <td><strong>Giảm bớt ghi nhớ (nhận biết thay vì nhớ)</strong></td>
+                            <td>Thông tin cần thiết được hiển thị rõ, không yêu cầu người dùng nhớ</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">7</td>
+                            <td><strong>Linh hoạt và hiệu quả sử dụng</strong></td>
+                            <td>Hỗ trợ người dùng thành thạo và mới bằng các cách thức khác nhau</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">8</td>
+                            <td><strong>Thiết kế tối giản và thẩm mỹ</strong></td>
+                            <td>Giao diện không quá rườm rà, chỉ chứa thông tin cần thiết</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">9</td>
+                            <td><strong>Giúp nhận biết, chẩn đoán và phục hồi lỗi</strong></td>
+                            <td>Hệ thống thông báo lỗi rõ ràng và hướng dẫn cách khắc phục</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Khi chụp ảnh hoặc chọn ảnh từ thư viện nếu gặp lỗi không lấy được hình ảnh thì chưa có
+                                thông báo cho việc tải hình ảnh lỗi</td>
+                            <td class="severity severity-4">4</td>
+                            <td>
+                                <div class="suggestion">Cần thông báo khi ảnh bị lỗi không tải được</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">10</td>
+                            <td><strong>Hỗ trợ và tài liệu hướng dẫn</strong></td>
+                            <td>Có sẵn phần trợ giúp, tài liệu cho người dùng khi cần</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Người dùng là người lớn tuổi có thể không biết AI và cách sử dụng nên cần có hướng dẫn
+                                cụ thể</td>
+                            <td class="severity severity-3">3</td>
+                            <td>
+                                <div class="suggestion">Cần hướng dẫn cụ thể chi tiết cho người cao tuổi</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <h1 class="hci-title">Đánh giá HCI: Luyện đánh vần (Phạm Quang Vinh)</h1>
+
+            <div class="hci-table-wrapper">
+                <table class="hci-table">
+                    <thead>
+                        <tr>
+                            <th class="stt-col">STT</th>
+                            <th style="width: 180px;">Nguyên tắc (Heuristic)</th>
+                            <th style="width: 200px;">Mô tả ngắn gọn</th>
+                            <th style="width: 100px;">Vi phạm</th>
+                            <th style="width: 200px;">Mô tả chi tiết vi phạm</th>
+                            <th style="width: 80px;">Mức độ (0-4)</th>
+                            <th style="width: 180px;">Gợi ý cải tiến</th>
+                            <th style="width: 200px;">Ghi chú thêm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="stt-col">1</td>
+                            <td><strong>Hiển thị trạng thái hệ thống rõ ràng</strong></td>
+                            <td>Người dùng biết được hệ thống đang làm gì (loading, tiến trình...)</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">2</td>
+                            <td><strong>Ngôn ngữ phù hợp với người dùng</strong></td>
+                            <td>Giao diện dùng ngôn ngữ dễ hiểu, gần gũi với người dùng</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">3</td>
+                            <td><strong>Kiểm soát và tự do thao tác</strong></td>
+                            <td>Người dùng có thể quay lại, hủy thao tác dễ dàng</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">4</td>
+                            <td><strong>Tính nhất quán và theo chuẩn chung</strong></td>
+                            <td>Thuật ngữ, bố cục, giao diện giống nhau trong toàn bộ ứng dụng</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">5</td>
+                            <td><strong>Ngăn ngừa lỗi xảy ra</strong></td>
+                            <td>Giao diện thiết kế giúp tránh lỗi trước khi xảy ra</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Không có thông báo khi âm thanh có thể bị lỗi hoặc không phát được đoạn âm thanh</td>
+                            <td class="severity severity-3">3</td>
+                            <td>
+                                <div class="suggestion">Thêm thông báo khi âm thanh bị lỗi</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">6</td>
+                            <td><strong>Giảm bớt ghi nhớ (nhận biết thay vì nhớ)</strong></td>
+                            <td>Thông tin cần thiết được hiển thị rõ, không yêu cầu người dùng nhớ</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">7</td>
+                            <td><strong>Linh hoạt và hiệu quả sử dụng</strong></td>
+                            <td>Hỗ trợ người dùng thành thạo và mới bằng các cách thức khác nhau</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">8</td>
+                            <td><strong>Thiết kế tối giản và thẩm mỹ</strong></td>
+                            <td>Giao diện không quá rườm rà, chỉ chứa thông tin cần thiết</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">9</td>
+                            <td><strong>Giúp nhận biết, chẩn đoán và phục hồi lỗi</strong></td>
+                            <td>Hệ thống thông báo lỗi rõ ràng và hướng dẫn cách khắc phục</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Chưa có phản hồi khi người dùng bấm sai hoặc khi âm thanh lỗi</td>
+                            <td class="severity severity-3">3</td>
+                            <td>
+                                <div class="suggestion">Thêm thông báo "Không phát được âm thanh – vui lòng kiểm tra
+                                    loa"</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">10</td>
+                            <td><strong>Hỗ trợ và tài liệu hướng dẫn</strong></td>
+                            <td>Có sẵn phần trợ giúp, tài liệu cho người dùng khi cần</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Thiếu hướng dẫn cho người mới cách sử dụng</td>
+                            <td class="severity severity-2">2</td>
+                            <td>
+                                <div class="suggestion">Thêm hướng dẫn cho người mới cách sử dụng</div>
+                            </td>
+                            <td>
+                                <div class="note">Khi người dùng mở lần đầu, có thể hiển thị hướng dẫn ngắn "Nhấn vào
+                                    biểu tượng loa để nghe từng âm"</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <h1 class="hci-title">Đánh giá HCI: Đố vui (Phạm Quang Vinh)</h1>
+
+            <div class="hci-table-wrapper">
+                <table class="hci-table">
+                    <thead>
+                        <tr>
+                            <th class="stt-col">STT</th>
+                            <th style="width: 180px;">Nguyên tắc (Heuristic)</th>
+                            <th style="width: 200px;">Mô tả ngắn gọn</th>
+                            <th style="width: 100px;">Vi phạm</th>
+                            <th style="width: 200px;">Mô tả chi tiết vi phạm</th>
+                            <th style="width: 80px;">Mức độ (0-4)</th>
+                            <th style="width: 180px;">Gợi ý cải tiến</th>
+                            <th style="width: 200px;">Ghi chú thêm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="stt-col">1</td>
+                            <td><strong>Hiển thị trạng thái hệ thống rõ ràng</strong></td>
+                            <td>Người dùng biết được hệ thống đang làm gì (loading, tiến trình...)</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">2</td>
+                            <td><strong>Ngôn ngữ phù hợp với người dùng</strong></td>
+                            <td>Giao diện dùng ngôn ngữ dễ hiểu, gần gũi với người dùng</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">3</td>
+                            <td><strong>Kiểm soát và tự do thao tác</strong></td>
+                            <td>Người dùng có thể quay lại, hủy thao tác dễ dàng</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">4</td>
+                            <td><strong>Tính nhất quán và theo chuẩn chung</strong></td>
+                            <td>Thuật ngữ, bố cục, giao diện giống nhau trong toàn bộ ứng dụng</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">5</td>
+                            <td><strong>Ngăn ngừa lỗi xảy ra</strong></td>
+                            <td>Giao diện thiết kế giúp tránh lỗi trước khi xảy ra</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Khi đang chơi trò chơi mà bị thoát ra hay mất wifi thì tiến độ chơi có lưu lại không
+                            </td>
+                            <td class="severity severity-4">4</td>
+                            <td>
+                                <div class="suggestion">Cần thêm thông báo hoặc thêm hệ thống lưu tiến độ trả lời để
+                                    tránh việc đang làm mà bị lỗi</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">6</td>
+                            <td><strong>Giảm bớt ghi nhớ (nhận biết thay vì nhớ)</strong></td>
+                            <td>Thông tin cần thiết được hiển thị rõ, không yêu cầu người dùng nhớ</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">7</td>
+                            <td><strong>Linh hoạt và hiệu quả sử dụng</strong></td>
+                            <td>Hỗ trợ người dùng thành thạo và mới bằng các cách thức khác nhau</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">8</td>
+                            <td><strong>Thiết kế tối giản và thẩm mỹ</strong></td>
+                            <td>Giao diện không quá rườm rà, chỉ chứa thông tin cần thiết</td>
+                            <td><span class="violation-no">Không</span></td>
+                            <td></td>
+                            <td class="severity severity-0">0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">9</td>
+                            <td><strong>Giúp nhận biết, chẩn đoán và phục hồi lỗi</strong></td>
+                            <td>Hệ thống thông báo lỗi rõ ràng và hướng dẫn cách khắc phục</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Hiển thị kết quả đúng và cho người dùng xem lại kết quả đã chọn</td>
+                            <td class="severity severity-3">3</td>
+                            <td>
+                                <div class="suggestion">Thêm chức năng xem lại câu trả lời</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="stt-col">10</td>
+                            <td><strong>Hỗ trợ và tài liệu hướng dẫn</strong></td>
+                            <td>Có sẵn phần trợ giúp, tài liệu cho người dùng khi cần</td>
+                            <td><span class="violation-yes">Có</span></td>
+                            <td>Đối tượng là người lớn tuổi có thể không hiểu cách hoạt động của chức năng</td>
+                            <td class="severity severity-3">3</td>
+                            <td>
+                                <div class="suggestion">Cần thêm hướng dẫn cụ thể để người dùng sử dụng</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

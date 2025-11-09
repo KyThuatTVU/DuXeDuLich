@@ -221,6 +221,9 @@ function switchView(view) {
         case 'accounts':
             loadAccounts();
             break;
+        case 'settings':
+            loadSettings();
+            break;
         default:
             loadDashboard();
     }
@@ -2468,3 +2471,34 @@ function closeModal() {
 }
 
 window.closeModal = closeModal;
+
+// ============ SETTINGS ============
+async function loadSettings() {
+    const content = document.getElementById('admin-content');
+    content.innerHTML = '<div class="text-center py-12"><i class="fas fa-spinner fa-spin text-4xl text-primary mb-4"></i><p class="text-gray-600">Đang tải...</p></div>';
+
+    try {
+        // Load settings view from external file
+        if (typeof renderSettingsView === 'function') {
+            const html = await renderSettingsView();
+            content.innerHTML = html;
+            initSettingsHandlers();
+        } else {
+            // Fallback if external file not loaded
+            content.innerHTML = `
+                <div class="text-center py-12">
+                    <i class="fas fa-exclamation-circle text-4xl text-red-500 mb-4"></i>
+                    <p class="text-gray-600">Không thể tải trang cài đặt</p>
+                </div>
+            `;
+        }
+    } catch (error) {
+        console.error('Error loading settings:', error);
+        content.innerHTML = `
+            <div class="text-center py-12">
+                <i class="fas fa-exclamation-circle text-4xl text-red-500 mb-4"></i>
+                <p class="text-gray-600">Lỗi khi tải cài đặt: ${error.message}</p>
+            </div>
+        `;
+    }
+}

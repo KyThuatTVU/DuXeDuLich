@@ -62,7 +62,7 @@
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check text-accent mr-2 mt-1"></i>
-                            <span>Bạn có thể liên hệ trực tiếp qua Hotline: <strong>0123 456 789</strong> để được hỗ trợ nhanh hơn</span>
+                            <span>Bạn có thể liên hệ trực tiếp qua Hotline: <strong data-phone>0123 456 789</strong> để được hỗ trợ nhanh hơn</span>
                         </li>
                     </ul>
                 </div>
@@ -225,11 +225,11 @@
                     <h3 class="text-2xl font-bold mb-4">Cần tư vấn ngay?</h3>
                     <p class="mb-6">Liên hệ trực tiếp để được hỗ trợ nhanh chóng</p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="tel:0123456789" class="bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
+                        <a href="tel:0123456789" data-phone-link class="bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
                             <i class="fas fa-phone mr-2"></i>
-                            Gọi: 0123 456 789
+                            Gọi: <span data-phone>0123 456 789</span>
                         </a>
-                        <a href="https://zalo.me/0123456789" target="_blank" class="bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors inline-flex items-center justify-center">
+                        <a href="https://zalo.me/0123456789" data-zalo-link target="_blank" class="bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors inline-flex items-center justify-center">
                             <i class="fab fa-whatsapp mr-2"></i>
                             Chat Zalo
                         </a>
@@ -250,6 +250,7 @@
 
     <!-- Load Components -->
     <script src="js/components.js"></script>
+    <script src="js/settings-manager.js"></script>
     <script>
         // Initialize page
         document.addEventListener('DOMContentLoaded', async () => {
